@@ -3,237 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUREAGRO – Tecnologia e Sustentabilidade | Concurso Agrinho 2026</title>
-    <link rel="stylesheet" href="style.css">
+    <title>PUREAGRO – Tecnologia e Sustentabilidade</title>
+    <!-- Google Fonts: Serifada elegante para títulos manuais e Sans-serif limpa para leitura -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <!-- Vinculação do CSS Externo -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <button id="backToTop" title="Voltar ao topo">▲</button>
+    <!-- Acessibilidade: Link de salto rápido para leitores de tela -->
+    <a href="#conteudo-principal" class="link-salto">Pular para o conteúdo principal</a>
 
-    <div class="audio-control">
-        <button id="musicBtn" title="Ativar/Desativar música de fundo">
-            <span class="icon">🎵</span> <span class="text">Ouvir o Campo</span>
+    <!-- Player de Música Ambiente Opcional -->
+    <div class="player-ambiente" role="complementary" aria-label="Trilha sonora do ambiente">
+        <button id="btn-musica" class="controlador-audio" aria-pressed="false">
+            <span class="icone-audio">🎵</span> Ouvir o Som do Campo
         </button>
-        <audio id="bgMusic" loop src="https://www.archive.org/download/soft-acoustic-guitar-background-music/Soft%20Acoustic%20Guitar%20Background%20Music.mp3"></audio>
+        <!-- O arquivo de áudio pode ser substituído por uma trilha livre de direitos autorais (.mp3) -->
+        <audio id="audio-fundo" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
     </div>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                PURE<span>AGRO</span>
-                <small class="handwritten-tag">por Ana Carolina</small>
+    <!-- Cabeçalho e Navegação -->
+    <header class="topo-site">
+        <div class="container cabeçalho-flex">
+            <div class="marca">
+                <span class="logo-texto">PURE<span class="destaque-rosa">AGRO</span></span>
+                <p class="slogan-marca">Onde a tradição cultiva o futuro.</p>
             </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#projeto">O Projeto</a></li>
-                    <li><a href="#minha-raiz">Minha Raiz</a></li>
-                    <li><a href="#tecnologia">Tecnologia</a></li>
-                    <li><a href="#praticas">Práticas</a></li>
-                    <li><a href="#explorar">Explorar</a></li>
-                    <li><a href="#pegada">Pegada Ambiental</a></li>
+            <nav class="menu-navegacao" aria-label="Navegação Principal">
+                <button class="menu-hamburguer" aria-label="Abrir Menu" aria-expanded="false">
+                    <span class="barra"></span>
+                    <span class="barra"></span>
+                    <span class="barra"></span>
+                </button>
+                <ul class="lista-menu">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#essencia">Nossa Essência</a></li>
+                    <li><a href="#agro-regional">Agro PR & BR</a></li>
+                    <li><a href="#estatisticas">Dados e Impacto</a></li>
+                    <li><a href="#linha-tempo">Evolução</a></li>
+                    <li><a href="#antes-depois">Transformação</a></li>
+                    <li><a href="#mapa-interativo">Mapa</a></li>
+                    <li><a href="#eco-calculadora">Eco-Calculadora</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section id="hero" class="hero-section" style="background: linear-gradient(rgba(10, 34, 64, 0.75), rgba(10, 34, 64, 0.75)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad451?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;">
-            <div class="hero-content fade-in">
-                <span class="badge">Concurso Agrinho 2026</span>
-                <h1>Agro forte, futuro sustentável</h1>
-                <h2>O equilíbrio vital entre a produção de alimentos e a preservação do meio ambiente.</h2>
-                <p>Criado por Ana Carolina Pissini • Uma visão jovem que conecta as inovações digitais às lições de terra que herdei da minha família.</p>
-                <a href="#projeto" class="btn-primary">Explorar Projeto</a>
+    <!-- Conteúdo Principal -->
+    <main id="conteudo-principal">
+
+        <!-- 1. SEÇÃO HOME (HERO) -->
+        <section id="home" class="secao-hero" aria-label="Abertura do Portal">
+            <div class="container hero-grid">
+                <div class="hero-conteudo">
+                    <span class="tag-ano">Concurso Agrinho 2026</span>
+                    <h1 class="titulo-principal">Agro forte, futuro sustentável: <span class="sublinhado-artesanal">equilíbrio</span> entre produção e meio ambiente</h1>
+                    <p class="texto-hero">A produção de alimentos e a preservação ambiental não andam em caminhos opostos. Descubra como a inovação tecnológica, unida à sabedoria da terra ancestral, está desenhando o amanhã do nosso agronegócio.</p>
+                    <div class="hero-botoes">
+                        <a href="#essencia" class="botao-principal">Conheça Nossa História</a>
+                        <a href="#eco-calculadora" class="botao-secundario">Testar Eco-Calculadora</a>
+                    </div>
+                </div>
+                <div class="hero-imagem-wrapper">
+                    <!-- Ilustração conceitual de satélite e plantação -->
+                    <img src="https://images.unsplash.com/photo-1592982537447-744077110b93?auto=format&fit=crop&w=800&q=80" alt="Ilustração de tecnologia agrícola moderna combinada com a natureza" class="imagem-hero">
+                    <div class="decoracao-sketch decoracao-1"></div>
+                </div>
             </div>
-            <div class="handwritten-decor bottom-right">🌱 Produzir com respeito.</div>
         </section>
 
-        <section id="projeto" class="section-padding reveal">
+        <!-- 2. SEÇÃO ESSÊNCIA HUMANA (SOBRE MIM) -->
+        <section id="essencia" class="secao-essencia" aria-label="Essência Humana e Raízes">
+            <div class="container essencia-grid">
+                <div class="essencia-imagens">
+                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80" alt="Sítio tradicional e acolhedor que representa a agricultura familiar" class="imagem-essencia-principal">
+                    <div class="card-depoimento-sketch">
+                        <p class="texto-sketch">"O cheiro da terra molhada e o barulho do trator sempre fizeram parte das minhas melhores memórias de infância."</p>
+                    </div>
+                </div>
+                <div class="essencia-texto">
+                    <span class="subtitulo-secao">Conexão Real</span>
+                    <h2 class="titulo-secao">Minhas Raízes no Chão de Cimento e na Terra Roxa</h2>
+                    <p class="paragrafo">Muitas pessoas olham para o agronegócio apenas através de gráficos de exportação e telas de computadores. Para mim, o agro tem rosto, tem calos nas mãos e tem cheiro de café passado no bule logo cedo. Sou estudante do 2º ano do Ensino Médio, nascido e criado em uma cidade profundamente moldada pela força agrícola, mas minha verdadeira conexão com esse ecossistema vem de gerações.</p>
+                    <p class="paragrafo">Meu pai cresceu vivendo o dia a dia do agronegócio, compreendendo os desafios do gerenciamento, das safras e do mercado. Meus avós construíram suas vidas inteiras no sítio, onde minha avó reside até hoje, cuidando da terra com o mesmo carinho e respeito de décadas atrás. Foi lá, correndo entre as plantações e observando o ciclo das sementes, que aprendi a valorizar o suor de quem alimenta o país.</p>
+                    <p class="paragrafo">Este projeto não nasce de pesquisas frias de internet. Ele é o reflexo da minha vivência. É a união do respeito que tenho pelo passado agrícola da minha família com o entusiasmo tecnológico que vejo na minha geração para proteger o meio ambiente.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SEÇÃO O AGRO NO PARANÁ E NO BRASIL -->
+        <section id="agro-regional" class="secao-agro-regional">
             <div class="container">
-                <div class="section-header">
-                    <h2>O Projeto PUREAGRO</h2>
-                    <p class="subtitle">Equilíbrio é a nossa palavra-chave</p>
+                <div class="alinhamento-centro">
+                    <span class="subtitulo-secao">Cenário Macroeconômico</span>
+                    <h2 class="titulo-secao">A Força que Alimenta o Mundo com Consciência</h2>
                 </div>
-                <div class="grid-2">
-                    <div class="text-block">
-                        <p>O <strong>PUREAGRO</strong> é um portal informativo e interativo desenvolvido especialmente para o <strong>Concurso Agrinho 2026</strong>. O objetivo central é responder ao desafio do tema anual, demonstrando de forma prática como o desenvolvimento tecnológico e a conservação ecológica andam de mãos dadas.</p>
-                        <p>Como estudante do 2º ano do Ensino Médio, compreendo que o papel da nossa geração não é criar barreiras para a produção, mas sim implementar ferramentas inteligentes. Queremos espalhar a mensagem de que a agricultura moderna otimiza recursos, protege ecossistemas e valoriza o produtor rural.</p>
-                    </div>
-                    <div class="card highlight-card">
-                        <h3>Objetivos do PUREAGRO</h3>
-                        <p>Mapear tecnologias de campo acessíveis, calcular impactos do consumo e provar que a agricultura paranaense caminha em direção ao desperdício zero.</p>
-                        <span class="handwritten-note">"Quem cuida do chão, garante o pão!"</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="minha-raiz" class="section-padding bg-light reveal">
-            <div class="container grid-2 align-center">
-                <div class="image-frame">
-                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="Mãos segurando terra com broto verde">
-                    <div class="frame-caption handwritten">Lembranças do sítio da minha avó</div>
-                </div>
-                <div class="text-block text-heart">
-                    <span class="accent-title">Minha História com o Campo</span>
-                    <h2>Conexão Humana e Verdadeira</h2>
-                    <p>Falar de agricultura para mim não é decorar dados de um slide escolar; é lembrar das mãos calejadas do meu pai. Ele viveu na pele as dificuldades e as alegrias do campo, e sempre fez questão de me ensinar o valor de cada grão. Grande parte da minha infância foi moldada pelas férias passadas no pequeno sítio da minha avó, onde o tempo parecia ditar um ritmo de respeito absoluto à terra.</p>
-                    <p>Cresci em uma cidade cuja economia e alma pulsam com o agronegócio. Ouvir histórias sobre safras passadas, geadas e superações me fez perceber que o campo não é isolado da tecnologia. Essa vivência genuína despertou meu desejo de usar a inovação digital para proteger a herança da minha família e construir um futuro agrícola equilibrado.</p>
+                <div class="cards-agro-grid">
+                    <article class="card-agro">
+                        <div class="card-icone">🌾</div>
+                        <h3>Agricultura Familiar</h3>
+                        <p>Responsável pela maior parte dos alimentos que chegam diretamente à mesa dos brasileiros. No Paraná, pequenos produtores combinam técnicas tradicionais com práticas de conservação de solo, mostrando que o tamanho da terra não limita a sua grandeza sustentável.</p>
+                    </article>
+                    <article class="card-agro">
+                        <div class="card-icone">🤝</div>
+                        <h3>Cooperativismo Forte</h3>
+                        <p>O modelo cooperativo paranaense é referência global. Ele une pequenos, médios e grandes produtores, garantindo assistência técnica de ponta, distribuição justa de renda e investimentos maciços em tecnologias de mitigação de impactos ambientais.</p>
+                    </article>
+                    <article class="card-agro">
+                        <div class="card-icone">🚢</div>
+                        <h3>Exportações Inteligentes</h3>
+                        <p>Em 2026, o mercado internacional exige rastreabilidade total. O Brasil e o Paraná destacam-se não apenas pelo volume de grãos e proteínas exportados, mas pelo cumprimento de rigorosas metas ambientais e certificações de carbono neutro.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="tecnologia" class="section-padding reveal">
+        <!-- 4. SEÇÃO PAINEL DE ESTATÍSTICAS ANIMADAS -->
+        <section id="estatisticas" class="secao-estatisticas">
+            <div class="container estatisticas-grid">
+                <div class="estatistica-item">
+                    <span class="numero-contador" data-alvo="240">0</span><span class="sufixo">Mi</span>
+                    <p class="estatistica-legenda">Toneladas de grãos produzidas com técnicas de plantio direto sustentável no Brasil.</p>
+                </div>
+                <div class="estatistica-item">
+                    <span class="numero-contador" data-alvo="85">0</span><span class="sufixo">%</span>
+                    <p class="estatistica-legenda">De redução no uso de água em propriedades que utilizam sensores e irrigação de precisão.</p>
+                </div>
+                <div class="estatistica-item">
+                    <span class="numero-contador" data-alvo="42">0</span><span class="sufixo">%</span>
+                    <p class="estatistica-legenda">Do território das propriedades rurais paranaenses destinado exclusivamente à preservação e reserva legal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SEÇÃO LINHA DO TEMPO DA EVOLUÇÃO -->
+        <section id="linha-tempo" class="secao-linha-tempo">
             <div class="container">
-                <div class="section-header">
-                    <h2>Tecnologia e Agricultura de Precisão</h2>
-                    <p class="subtitle">A era dos dados transformando o trabalho na terra</p>
+                <div class="alinhamento-centro">
+                    <span class="subtitulo-secao">Nossa Jornada</span>
+                    <h2 class="titulo-secao">A Evolução da Relação com a Terra</h2>
                 </div>
-                <div class="grid-4">
-                    <div class="tech-card">
-                        <div class="tech-icon">🛸</div>
-                        <h3>Drones de Monitoramento</h3>
-                        <p>Mapeiam a lavoura por sensores térmicos, identificando pragas cirurgicamente e evitando o uso em excesso de defensivos.</p>
+                <div class="cronologia">
+                    <div class="bloco-cronologico">
+                        <div class="ponto-marcador"></div>
+                        <div class="conteudo-cronologico">
+                            <span class="ano-cronologico">Anos Passados</span>
+                            <h3>Agricultura Tradicional</h3>
+                            <p>Trabalho puramente braçal, alta dependência de condições climáticas sem previsibilidade e manejo empírico do solo. Uma época de muita dedicação, mas com grandes perdas de produtividade e desgaste físico dos produtores.</p>
+                        </div>
                     </div>
-                    <div class="tech-card">
-                        <div class="tech-icon">📟</div>
-                        <h3>Sensores de Solo (IoT)</h3>
-                        <p>Dispositivos fincados na terra analisam umidade, condutividade e nutrientes, enviando dados ao produtor em tempo real.</p>
+                    <div class="bloco-cronologico">
+                        <div class="ponto-marcador"></div>
+                        <div class="conteudo-cronologico">
+                            <span class="ano-cronologico">Fim do Séc. XX</span>
+                            <h3>A Era da Mecanização</h3>
+                            <p>Chegada em massa de tratores, colheitadeiras e implementos agrícolas modernos. A produtividade dispara, mas surge a necessidade urgente de criar barreiras contra a erosão do solo e o esgotamento dos recursos hídricos.</p>
+                        </div>
                     </div>
-                    <div class="tech-card">
-                        <div class="tech-icon">🧠</div>
-                        <h3>Inteligência Artificial</h3>
-                        <p>Algoritmos analisam históricos climáticos e padrões de folhas para prever ameaças e indicar os dias perfeitos de colheita.</p>
+                    <div class="bloco-cronologico">
+                        <div class="ponto-marcador"></div>
+                        <div class="conteudo-cronologico">
+                            <span class="ano-cronologico">Início do Séc. XXI</span>
+                            <h3>Agricultura de Precisão</h3>
+                            <p>Uso de GPS agrícola, análise química setorizada do solo e aplicação mapeada de insumos. O desperdício cai drasticamente e o produtor passa a enxergar cada metro quadrado da fazenda de forma individualizada.</p>
+                        </div>
                     </div>
-                    <div class="tech-card">
-                        <div class="tech-icon">🚜</div>
-                        <h3>Maquinário Autônomo</h3>
-                        <p>Tratores guiados por satélite evitam a sobreposição de faixas de plantio, economizando combustível e reduzindo a compactação do solo.</p>
+                    <div class="bloco-cronologico">
+                        <div class="ponto-marcador"></div>
+                        <div class="conteudo-cronologico">
+                            <span class="ano-cronologico">Ano Atual (2026)</span>
+                            <h3>Equilíbrio Conectado & Inteligência Artificial</h3>
+                            <p>Drones autônomos que identificam pragas em tempo real, sensores de umidade profundos integrados com IA e fazendas focadas em pegada de carbono zero. O agro atinge sua força máxima produzindo em perfeita harmonia com as florestas e bacias hidrográficas.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="praticas" class="section-padding bg-dark text-white reveal">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="text-white">Sustentabilidade na Prática</h2>
-                    <p class="subtitle text-light">Ações ecológicas aplicadas no dia a dia rural</p>
-                </div>
-                <div class="grid-4">
-                    <div class="sust-card">
-                        <h4>💧 Preservação da Água</h4>
-                        <p>Sistemas modernos de gotejamento evitam a evaporação precoce e usam apenas a dosagem necessária direto nas raízes.</p>
-                    </div>
-                    <div class="sust-card">
-                        <h4>🌱 Conservação do Solo</h4>
-                        <p>A prática do plantio direto utiliza resíduos vegetais da safra anterior para criar um cobertor orgânico contra erosões.</p>
-                    </div>
-                    <div class="sust-card">
-                        <h4>☀️ Energia Limpa</h4>
-                        <p>Tetos de aviários e galpões cobertos por painéis fotovoltaicos, aproveitando a radiação solar para autossuficiência energética.</p>
-                    </div>
-                    <div class="sust-card">
-                        <h4>🌳 Reflorestamento e ILPF</h4>
-                        <p>Integração Lavoura-Pecuária-Floresta insere fileiras de árvores nativas junto às plantações, sequestrando carbono.</p>
-                    </div>
-                </div>
-                <div class="text-center margin-t-10" style="padding-top: 30px;">
-                    <p class="handwritten-text text-pink">"Sustentabilidade não é frear o progresso, é garantir que o solo permaneça vivo para os que virão."</p>
                 </div>
             </div>
         </section>
 
-        <section class="section-padding reveal">
+        <!-- 6. SEÇÃO ANTES E DEPOIS -->
+        <section id="antes-depois" class="secao-antes-depois">
             <div class="container">
-                <div class="section-header">
-                    <h2>Evolução das Práticas de Campo</h2>
-                    <p class="subtitle">Como a consciência mudou o manejo da nossa terra</p>
+                <div class="alinhamento-centro">
+                    <span class="subtitulo-secao">A Transformação na Prática</span>
+                    <h2 class="titulo-secao">Práticas Antigas vs. Tecnologias Sustentáveis</h2>
                 </div>
-                <div class="grid-2">
-                    <div class="compare-card old">
-                        <div class="compare-badge old-badge">Manejo Antigo</div>
-                        <h3>Técnicas Tradicionais</h3>
-                        <ul>
-                            <li>Arado agressivo revirando o solo e facilitando enxurradas.</li>
-                            <li>Irrigação sem controle gerando desperdício de água potável.</li>
-                            <li>Aplicação massiva de insumos em áreas completas da fazenda.</li>
+                <div class="antes-depois-container">
+                    <div class="coluna-antes">
+                        <div class="tag-comparativa antes">Práticas Antigas</div>
+                        <ul class="lista-comparativa">
+                            <li>Arado excessivo que causava severa erosão e empobrecimento biológico do solo.</li>
+                            <li>Irrigação por inundação ou aspersão sem controle, desperdiçando grandes volumes de água doce.</li>
+                            <li>Pulverização uniforme de defensivos em toda a área plantada, gerando maior impacto ambiental desnecessário.</li>
+                            <li>Queima de resíduos e palhadas após a colheita, liberando gases poluentes na atmosfera.</li>
                         </ul>
                     </div>
-                    <div class="compare-card new">
-                        <div class="compare-badge new-badge">Manejo PUREAGRO</div>
-                        <h3>Técnicas Sustentáveis</h3>
-                        <ul>
-                            <li><strong>Plantio Direto:</strong> Solo intocado e enriquecido organicamente.</li>
-                            <li><strong>Gotejamento Inteligente:</strong> Liberação hídrica automatizada por sensores.</li>
-                            <li><strong>Pulverização Alvo:</strong> Aplicação focada somente onde há necessidade real.</li>
+                    <div class="divisoria-sketch"></div>
+                    <div class="coluna-depois">
+                        <div class="tag-comparativa depois">Sustentabilidade Atual</div>
+                        <ul class="lista-comparativa">
+                            <li>Sistema de Plantio Direto sobre a palha, mantendo a umidade, a vida do solo e capturando carbono.</li>
+                            <li>Gotejamento automatizado com leitura de sensores de solo, usando apenas a água necessária por planta.</li>
+                            <li>Drones de pulverização localizada atuando somente nas plantas doentes, reduzindo insumos em até 90%.</li>
+                            <li>Transformação de resíduos agrícolas em biofertilizantes e geração de energia através de biogás.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="explorar" class="section-padding bg-light reveal">
+        <!-- 7. SEÇÃO MAPA INTERATIVO -->
+        <section id="mapa-interativo" class="secao-mapa">
             <div class="container">
-                <div class="section-header">
-                    <h2>Espaço de Exploração Interativa</h2>
-                    <p class="subtitle">História, dados e o protagonismo do Paraná</p>
+                <div class="alinhamento-centro">
+                    <span class="subtitulo-secao">Geografia Produtiva</span>
+                    <h2 class="titulo-secao">Mapa de Culturas e Sustentabilidade</h2>
+                    <p class="instrucao-mapa">Selecione uma região abaixo para analisar o balanço produtivo e as suas principais características ecológicas locais.</p>
                 </div>
-
-                <div class="grid-3 text-center margin-b-20" style="padding-bottom: 40px;">
-                    <div class="counter-box-alt">
-                        <div class="counter" data-target="35">0</div>
-                        <p>Participação do Agro no PIB do Paraná</p>
+                <div class="mapa-wrapper">
+                    <!-- Abas de seleção de mapa -->
+                    <div class="abas-mapa" role="tablist">
+                        <button id="tab-pr" class="aba-item ativa" role="tab" aria-selected="true" aria-controls="painel-mapa">Estado do Paraná</button>
+                        <button id="tab-br" class="aba-item" role="tab" aria-selected="false" aria-controls="painel-mapa">Território Brasileiro</button>
                     </div>
-                    <div class="counter-box-alt">
-                        <div class="counter" data-target="70">0</div>
-                        <p>Alimentos consumidos vindos da Agricultura Familiar</p>
-                    </div>
-                    <div class="counter-box-alt">
-                        <div class="counter" data-target="85">0</div>
-                        <p>% de Economia hídrica com o uso de sensores de precisão</p>
-                    </div>
-                </div>
-
-                <div class="timeline">
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <span class="time-era">Passado Tradicional</span>
-                            <h3>Manejo Braçal</h3>
-                            <p>Dependência integral do clima sem dados preditivos, com alto desgaste e erosão precoce dos solos paranaenses.</p>
+                    <div id="painel-mapa" class="mapa-conteudo-flex">
+                        <!-- Simulação gráfica do mapa em CSS usando polígonos/botões clicáveis -->
+                        <div class="mapa-grafico-sketch" id="container-regioes">
+                            <!-- Os botões de regiões serão controlados pelo JS -->
+                            <button class="regiao-ponto p1" data-regiao="norte-pr">Norte do PR</button>
+                            <button class="regiao-ponto p2" data-regiao="oeste-pr">Oeste do PR</button>
+                            <button class="regiao-ponto p3" data-regiao="sul-pr">Sul do PR</button>
                         </div>
-                    </div>
-                    <div class="timeline-item right">
-                        <div class="timeline-content">
-                            <span class="time-era">Mecanização</span>
-                            <h3>Chegada de Maquinários</h3>
-                            <p>Introdução de tratores e colheitadeiras nas décadas de 70 e 80, expandindo as fronteiras de grãos do estado.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <span class="time-era">Presente Digital</span>
-                            <h3>Era da Informação (Agro 4.0)</h3>
-                            <p>Adoção de satélites, telemetria de frotas e drones para redução sistemática de perdas e insumos químicos.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="margin-t-10" style="padding-top: 50px;">
-                    <h3 class="text-center margin-b-20">Mapa e Fatos do Paraná Agrícola</h3>
-                    <div class="map-wrapper grid-2">
-                        <div class="map-buttons-panel">
-                            <button class="map-btn" data-region="pr-norte">Norte do Paraná</button>
-                            <button class="map-btn" data-region="pr-oeste">Oeste Paranaense</button>
-                            <button class="map-btn" data-region="pr-sul">Campos Gerais e Sul</button>
-                        </div>
-                        <div class="map-display-card" id="mapDisplay">
-                            <div class="display-placeholder">
-                                <span class="pulse-icon">📍</span>
-                                <p>Clique em uma região ao lado para ler curiosidades reais mapeadas pela pesquisa do projeto.</p>
+                        <div class="mapa-detalhes-card" id="dados-regiao">
+                            <h3 id="nome-regiao">Selecione uma Região</h3>
+                            <p id="descricao-regiao">Clique em um dos pontos do mapa ao lado para visualizar os dados detalhados de culturas econômicas e estratégias de preservação do meio ambiente aplicadas na localidade.</p>
+                            <div class="dados-destaque-mapa hidden" id="metricas-regiao">
+                                <span class="metrica-linha"><strong>Principal Cultura:</strong> <span id="cultura-txt">-</span></span>
+                                <span class="metrica-linha"><strong>Foco Ecológico:</strong> <span id="foco-txt">-</span></span>
                             </div>
                         </div>
                     </div>
@@ -241,120 +250,147 @@
             </div>
         </section>
 
-        <section class="section-padding reveal">
+        <!-- 8. SEÇÃO ECO-CALCULADORA -->
+        <section id="eco-calculadora" class="secao-calculadora">
+            <div class="container calculadora-box">
+                <div class="alinhamento-centro">
+                    <span class="subtitulo-secao">Ferramenta Interativa</span>
+                    <h2 class="titulo-secao">Simulador de Impacto e Economia Ambiental</h2>
+                    <p>Insira os dados estimados da sua propriedade ou simule um cenário agrícola para descobrir o ganho de sustentabilidade gerado pela tecnologia.</p>
+                </div>
+                <form id="form-calculadora" class="grid-form-calculadora" onsubmit="event.preventDefault();">
+                    <div class="campo-grupo">
+                        <label for="tamanho-area">Tamanho da Área Cultivada (em Hectares):</label>
+                        <input type="number" id="tamanho-area" min="1" placeholder="Ex: 50" required class="input-estilizado">
+                    </div>
+                    <div class="campo-grupo">
+                        <label for="tipo-manejo">Tecnologia de Manejo Aplicada:</label>
+                        <select id="tipo-manejo" class="select-estilizado" required>
+                            <option value="">-- Selecione uma opção --</option>
+                            <option value="convencional">Manejo Convencional Sem Tecnologia</option>
+                            <option value="precisao">Agricultura de Precisão (Sensores de Solo)</option>
+                            <option value="direto">Plantio Direto Consolidado com Rotação</option>
+                            <option value="total">Tecnologia Total (IA + Drones + Manejo Biológico)</option>
+                        </select>
+                    </div>
+                    <button type="button" id="btn-calcular" class="botao-calculadora">Simular Pegada Ambiental</button>
+                </form>
+                <!-- Resultado oculto inicialmente, revelado via JS -->
+                <div id="resultado-calculadora" class="resultado-painel hidden">
+                    <h3>Resultado da Sua Simulação Ecológica</h3>
+                    <div class="cards-resultado-grid">
+                        <div class="card-res">
+                            <h4>Economia de Água Estimada</h4>
+                            <p class="valor-res" id="res-agua">0 Litros</p>
+                        </div>
+                        <div class="card-res">
+                            <h4>CO₂ Retido no Solo / Reduzido</h4>
+                            <p class="valor-res" id="res-carbono">0 kg/CO₂</p>
+                        </div>
+                        <div class="card-res">
+                            <h4>Índice de Sustentabilidade</h4>
+                            <p class="valor-res" id="res-nivel">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. CURIOSIDADES DO PARANÁ -->
+        <section class="secao-curiosidades">
+            <div class="container container-curiosidades">
+                <div class="card-curiosidade-central">
+                    <div class="lampada-icone">💡</div>
+                    <span class="subtitulo-secao">Você Sabia? — Fatos do Paraná</span>
+                    <p id="texto-curiosidade" class="texto-curiosidade">O Paraná possui leis rigorosas de proteção a bacias hidrográficas rurais, fazendo com que o agronegócio trabalhe lado a lado com as reservas de água doce do estado.</p>
+                    <button id="btn-proxima-curiosidade" class="botao-curiosidade">Descobrir Nova Curiosidade</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. GALERIA INTERATIVA (CARROSSEL) -->
+        <section id="galeria" class="secao-galeria" aria-label="Galeria Fotográfica e de Ilustrações">
             <div class="container">
-                <div class="carousel-container">
-                    <div class="carousel-slide active">
-                        <img src="https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&w=1200&q=80" alt="Lavoura de trigo dourada">
-                        <div class="carousel-caption">Trigo crescendo sob as práticas de manejo direto e sustentável do Paraná.</div>
+                <div class="alinhamento-centro">
+                    <span class="subtitulo-secao">Registros do Campo</span>
+                    <h2 class="titulo-secao">Nossa Visão em Imagens Artísticas</h2>
+                </div>
+                <div class="carrossel-wrapper">
+                    <div class="carrossel-trilho" id="carrossel-trilho">
+                        <div class="carrossel-item ativo">
+                            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad451?auto=format&fit=crop&w=1000&q=80" alt="Plantação jovem crescendo sob o sol com linhas perfeitas de plantio direto">
+                            <div class="carrossel-legenda">Tecnologia de conservação e respeito ao ciclo orgânico do solo.</div>
+                        </div>
+                        <div class="carrossel-item">
+                            <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=1000&q=80" alt="Produtor rural analisando folhas de cultivo utilizando um tablet integrado">
+                            <div class="carrossel-legenda">Agricultura familiar conectada à transformação digital.</div>
+                        </div>
+                        <div class="carrossel-item">
+                            <img src="https://images.unsplash.com/photo-1463121859909-013e6ca5d91e?auto=format&fit=crop&w=1000&q=80" alt="Belo horizonte de colheita sustentável integrada a uma floresta nativa preservada">
+                            <div class="carrossel-legenda">O equilíbrio perfeito entre a produção massiva e a biodiversidade intocada.</div>
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1628352081506-83c43123ed6d?auto=format&fit=crop&w=1200&q=80" alt="Tecnologia móvel na lavoura">
-                        <div class="carousel-caption">Softwares integrados monitorando a umidade diretamente do smartphone do produtor.</div>
-                    </div>
-                    <button class="carousel-control prev" id="caroPrev">❮</button>
-                    <button class="carousel-control next" id="caroNext">❯</button>
+                    <!-- Controles do Carrossel -->
+                    <button class="carrossel-btn btn-prev" id="carrossel-prev" aria-label="Imagem Anterior">&#10094;</button>
+                    <button class="carrossel-btn btn-next" id="carrossel-next" aria-label="Próxima Imagem">&#10095;</button>
                 </div>
             </div>
         </section>
 
-        <section id="pegada" class="section-padding bg-light reveal">
-            <div class="container max-width-700">
-                <div class="section-header">
-                    <h2>Calculadora de Pegada Ambiental</h2>
-                    <p class="subtitle">Descubra como seus hábitos urbanos influenciam os recursos do campo</p>
-                </div>
-                <div class="calculator-box">
-                    <form id="footprintForm">
-                        <div class="quiz-step active" data-step="1">
-                            <p class="quiz-question">1. Com que frequência sua residência adquire alimentos de feiras locais ou da agricultura familiar?</p>
-                            <label class="radio-label"><input type="radio" name="q1" value="10" required> Sempre compramos de pequenos produtores regionais.</label>
-                            <label class="radio-label"><input type="radio" name="q1" value="20"> Às vezes, dependendo da praticidade do supermercado.</label>
-                            <label class="radio-label"><input type="radio" name="q1" value="30"> Raramente. Não costumamos checar a origem das mercadorias.</label>
-                        </div>
-
-                        <div class="quiz-step" data-step="2">
-                            <p class="quiz-question">2. Qual o nível de desperdício de alimentos na cozinha da sua casa?</p>
-                            <label class="radio-label"><input type="radio" name="q2" value="10"> Praticamente zero. Reaproveitamos cascas e sobras de forma consciente.</label>
-                            <label class="radio-label"><input type="radio" name="q2" value="20"> Baixo/Moderado. Eventualmente alguns alimentos passam do ponto.</label>
-                            <label class="radio-label"><input type="radio" name="q2" value="30"> Alto. Jogamos porções prontas e vegetais estragados no lixo semanalmente.</label>
-                        </div>
-
-                        <div class="quiz-step" data-step="3">
-                            <p class="quiz-question">3. Qual o foco da base alimentícia da sua mesa?</p>
-                            <label class="radio-label"><input type="radio" name="q3" value="10"> Bastante natural (grãos, legumes, frutas frescas e carnes moderadas).</label>
-                            <label class="radio-label"><input type="radio" name="q3" value="25"> Baseada em ultraprocessados, congelados e refeições industriais rápidas.</label>
-                        </div>
-
-                        <div class="quiz-nav">
-                            <button type="button" id="prevBtn" class="btn-sub" disabled>Anterior</button>
-                            <button type="button" id="nextBtn" class="btn-primary">Próximo</button>
-                            <button type="submit" id="submitQuizBtn" class="btn-primary hide">Ver Meu Impacto</button>
-                        </div>
-                    </form>
-                    <div id="quizResult" class="quiz-result-box hide"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-padding reveal">
-            <div class="container max-width-600">
-                <div class="assistant-card">
-                    <div class="assistant-header">
-                        <div class="avatar-pure">🤖🌾</div>
-                        <div>
-                            <h4>Converse com a Mascote PURE</h4>
-                            <p class="status">Assistência Virtual Educativa</p>
-                        </div>
-                    </div>
-                    <div class="assistant-body">
-                        <p>Olá! Eu sou a <strong>PURE</strong>. Fui programada pela Ana Carolina para tirar suas dúvidas sobre como unimos tecnologia e campo verde. Selecione um assunto abaixo:</p>
-                        <div class="faq-buttons">
-                            <button class="faq-btn" data-question="agro">Como produzir sem agredir o solo?</button>
-                            <button class="faq-btn" data-question="agrinho">O que representa o Concurso Agrinho?</button>
-                        </div>
-                        <div id="assistantResponse" class="assistant-response-area hidden"></div>
+        <!-- 11. SEÇÃO FUTURO DO AGRO & CONCLUSÃO -->
+        <section class="secao-futuro">
+            <div class="container futuro-container">
+                <div class="bloco-texto-futuro">
+                    <span class="subtitulo-secao">O Amanhã é Agora</span>
+                    <h2>Inteligência Artificial, Energias Limpas e Responsabilidade Geracional</h2>
+                    <p class="paragrafo">O futuro do agronegócio não reside em explorar mais terras, mas sim em utilizar de forma mais inteligente e nobre a terra que já possuímos. Tecnologias como painéis solares alimentando sistemas de ordenha e irrigação, o uso de bioinsumos derivados de microrganismos naturais para reduzir defensivos químicos e sistemas algorítmicos de previsão climática transformaram o produtor rural em um verdadeiro cientista ambiental.</p>
+                    <p class="paragrafo">Como estudante e descendente de uma família que moldou seu sustento no campo, vejo com otimismo este horizonte. A preservação florestal e a alta rentabilidade econômica não se anulam; elas se multiplicam. O Paraná e o Brasil provam diariamente que a nossa herança de amor à terra é o combustível para um futuro próspero, tecnológico e eternamente sustentável.</p>
+                    <div class="assinatura-autoral">
+                        <p class="nome-autor">Projeto PUREAGRO 2026</p>
+                        <p class="detalhe-autor">Estudante do 2º Ano do Ensino Médio — Dedicado à memória do trabalho do meu pai e dos meus avós.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-padding hero-section" style="background: linear-gradient(rgba(10, 34, 64, 0.85), rgba(10, 34, 64, 0.85)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;">
-            <div class="container text-center text-white max-width-800 padding-v-60">
-                <span class="handwritten-title text-pink">Mensagem de Coração</span>
-                <h2 class="text-white margin-b-20">O Futuro Começa na Raiz</h2>
-                <p class="large-text">Observando o pôr do sol no horizonte do sítio da minha avó e vendo a precisão com que meu pai maneja a lavoura hoje, entendi que a sustentabilidade não é um conceito distante. Ela se faz presente a cada linha de código digitada e a cada árvore plantada na beira das nascentes. Unir tecnologia com o respeito à terra é a nossa missão.</p>
-                <div class="handwritten-signature">— Criado por Ana Carolina Pissini.</div>
-            </div>
-        </section>
     </main>
 
-    <footer>
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <h3>PURE<span>AGRO</span></h3>
-                <p>Tecnologia e Sustentabilidade a serviço da vida rural.</p>
-                <p class="handwritten-tag margin-t-10">Projeto desenvolvido por Ana Carolina</p>
+    <!-- 12. ASSISTENTE VIRTUAL FLUTUANTE (MASCOTE DO SITE) -->
+    <div id="assistente-virtual" class="assistente-container" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Falar com o Assistente do PUREAGRO">
+        <div class="assistente-balao-fala id="balao-assistente">
+            <p id="texto-balao">Olá! Sou o assistente do PUREAGRO. Clique em mim para descobrir dicas ecológicas e navegar pela nossa história!</p>
+        </div>
+        <div class="assistente-mascote-corpo">
+            <!-- Representação gráfica estilizada e humana do mascote -->
+            <div class="mascote-avatar">🌱🧑‍🌾</div>
+        </div>
+    </div>
+
+    <!-- Rodapé Completo do Site -->
+    <footer class="rodape-site">
+        <div class="container rodape-grid">
+            <div class="rodape-bloco-marca">
+                <span class="logo-texto-rodape">PURE<span class="destaque-rosa">AGRO</span></span>
+                <p>Equilíbrio real entre a força produtiva do campo e a sustentabilidade dos biomas nacionais.</p>
             </div>
-            <div class="footer-links">
-                <h4>Navegação Direta</h4>
+            <div class="rodape-links-rapidos">
+                <h4>Navegação</h4>
                 <ul>
-                    <li><a href="#projeto">O Projeto</a></li>
-                    <li><a href="#minha-raiz">Minha Raiz</a></li>
-                    <li><a href="#tecnologia">Tecnologia</a></li>
-                    <li><a href="#pegada">Pegada Ambiental</a></li>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#essencia">Nossa Essência</a></li>
+                    <li><a href="#mapa-interativo">Mapa Regional</a></li>
+                    <li><a href="#eco-calculadora">Simulador Ambiental</a></li>
                 </ul>
             </div>
-            <div class="footer-meta">
-                <h4>Agrinho 2026</h4>
-                <p>Tema: "Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente."</p>
+            <div class="rodape-creditos">
+                <h4>Concurso Agrinho 2026</h4>
+                <p>Material desenvolvido para fins exclusivamente educacionais e competitivos.</p>
+                <p class="direitos">&copy; 2026 PUREAGRO. Todos os direitos reservados.</p>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 PUREAGRO • Trabalho Escolar de Concurso do Ensino Médio. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Vinculação do JavaScript Externo -->
+    <script src="js/script.js"></script>
 </body>
 </html>
