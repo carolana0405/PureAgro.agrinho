@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <!-- Vinculação do CSS Externo -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Vinculação do CSS Externo Corrigida para Servidores Nuvem -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
@@ -21,7 +21,6 @@
         <button id="btn-musica" class="controlador-audio" aria-pressed="false">
             <span class="icone-audio">🎵</span> Ouvir o Som do Campo
         </button>
-        <!-- O arquivo de áudio pode ser substituído por uma trilha livre de direitos autorais (.mp3) -->
         <audio id="audio-fundo" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
     </div>
 
@@ -69,7 +68,6 @@
                     </div>
                 </div>
                 <div class="hero-imagem-wrapper">
-                    <!-- Ilustração conceitual de satélite e plantação -->
                     <img src="https://images.unsplash.com/photo-1592982537447-744077110b93?auto=format&fit=crop&w=800&q=80" alt="Ilustração de tecnologia agrícola moderna combinada com a natureza" class="imagem-hero">
                     <div class="decoracao-sketch decoracao-1"></div>
                 </div>
@@ -161,7 +159,7 @@
                         <div class="conteudo-cronologico">
                             <span class="ano-cronologico">Fim do Séc. XX</span>
                             <h3>A Era da Mecanização</h3>
-                            <p>Chegada em massa de tratores, colheitadeiras e implementos agrícolas modernos. A produtividade dispara, mas surge a necessidade urgente de criar barreiras contra a erosão do solo e o esgotamento dos recursos hídricos.</p>
+                            <p>Chegada em massa de tratores, colheitadeiras e implementos agrícolas modernos. A produtividade dispara, mas surge a necessidade urgente de criar barriers contra a erosão do solo e o esgotamento dos recursos hídricos.</p>
                         </div>
                     </div>
                     <div class="bloco-cronologico">
@@ -224,15 +222,12 @@
                     <p class="instrucao-mapa">Selecione uma região abaixo para analisar o balanço produtivo e as suas principais características ecológicas locais.</p>
                 </div>
                 <div class="mapa-wrapper">
-                    <!-- Abas de seleção de mapa -->
                     <div class="abas-mapa" role="tablist">
                         <button id="tab-pr" class="aba-item ativa" role="tab" aria-selected="true" aria-controls="painel-mapa">Estado do Paraná</button>
                         <button id="tab-br" class="aba-item" role="tab" aria-selected="false" aria-controls="painel-mapa">Território Brasileiro</button>
                     </div>
                     <div id="painel-mapa" class="mapa-conteudo-flex">
-                        <!-- Simulação gráfica do mapa em CSS usando polígonos/botões clicáveis -->
                         <div class="mapa-grafico-sketch" id="container-regioes">
-                            <!-- Os botões de regiões serão controlados pelo JS -->
                             <button class="regiao-ponto p1" data-regiao="norte-pr">Norte do PR</button>
                             <button class="regiao-ponto p2" data-regiao="oeste-pr">Oeste do PR</button>
                             <button class="regiao-ponto p3" data-regiao="sul-pr">Sul do PR</button>
@@ -275,7 +270,6 @@
                     </div>
                     <button type="button" id="btn-calcular" class="botao-calculadora">Simular Pegada Ambiental</button>
                 </form>
-                <!-- Resultado oculto inicialmente, revelado via JS -->
                 <div id="resultado-calculadora" class="resultado-painel hidden">
                     <h3>Resultado da Sua Simulação Ecológica</h3>
                     <div class="cards-resultado-grid">
@@ -330,7 +324,6 @@
                             <div class="carrossel-legenda">O equilíbrio perfeito entre a produção massiva e a biodiversidade intocada.</div>
                         </div>
                     </div>
-                    <!-- Controles do Carrossel -->
                     <button class="carrossel-btn btn-prev" id="carrossel-prev" aria-label="Imagem Anterior">&#10094;</button>
                     <button class="carrossel-btn btn-next" id="carrossel-next" aria-label="Próxima Imagem">&#10095;</button>
                 </div>
@@ -357,11 +350,10 @@
 
     <!-- 12. ASSISTENTE VIRTUAL FLUTUANTE (MASCOTE DO SITE) -->
     <div id="assistente-virtual" class="assistente-container" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Falar com o Assistente do PUREAGRO">
-        <div class="assistente-balao-fala id="balao-assistente">
+        <div class="assistente-balao-fala">
             <p id="texto-balao">Olá! Sou o assistente do PUREAGRO. Clique em mim para descobrir dicas ecológicas e navegar pela nossa história!</p>
         </div>
         <div class="assistente-mascote-corpo">
-            <!-- Representação gráfica estilizada e humana do mascote -->
             <div class="mascote-avatar">🌱🧑‍🌾</div>
         </div>
     </div>
@@ -390,7 +382,8 @@
         </div>
     </footer>
 
-    <!-- Vinculação do JavaScript Externo -->
-    <script src="js/script.js"></script>
+    <!-- Vinculação do JavaScript Externo Corrigida para Servidores Nuvem -->
+    <script src="./js/script.js"></script>
 </body>
 </html>
+
