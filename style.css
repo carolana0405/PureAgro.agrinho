@@ -295,7 +295,7 @@ footer { background-color: #051426; color: rgba(255,255,255,0.7); padding: 60px 
 .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; }
 .footer-bottom { text-align: center; padding-top: 20px; font-size: 0.8rem; }
 
-.reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal { opacity: 0; transform: translateY(0); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .fade-in { animation: fadeIn 1s ease forwards; }
 
