@@ -1,244 +1,310 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* ==========================================================================
+   PUREAGRO – TECNOLOGIA E SUSTENTABILIDADE (CONCURSO AGRINHO 2026)
+   LÓGICA INTERATIVA INTERNA - VANILLA JAVASCRIPT
+   ========================================================================== */
 
-    /* ==========================================================================
-       1. SISTEMA DE ÁUDIO SUAVE
-       ========================================================================== */
-    const musicBtn = document.getElementById('musicBtn');
-    const bgMusic = document.getElementById('bgMusic');
-    if(bgMusic) bgMusic.volume = 0.20;
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // ==========================================
+    // 1. PLAYER DE MÚSICA AMBIENTE
+    // ==========================================
+    const btnMusica = document.getElementById("btn-musica");
+    const audioFundo = document.getElementById("audio-fundo");
 
-    if(musicBtn && bgMusic) {
-        musicBtn.addEventListener('click', () => {
-            if (bgMusic.paused) {
-                bgMusic.play().then(() => {
-                    musicBtn.classList.add('playing');
-                    musicBtn.querySelector('.text').textContent = 'Música Ativa';
-                }).catch(() => console.log("Interação necessária para ativar áudio."));
+    if (btnMusica && audioFundo) {
+        // Reduz o volume para ficar uma música de fundo suave e agradável
+        audioFundo.volume = 0.2; 
+
+        btnMusica.addEventListener("click", () => {
+            if (audioFundo.paused) {
+                audioFundo.play().then(() => {
+                    btnMusica.innerHTML = "⏸️ Pausar Som do Campo";
+                    btnMusica.setAttribute("aria-pressed", "true");
+                }).catch(err => console.log("Áudio bloqueado pelo navegador. Requer interação prévia."));
             } else {
-                bgMusic.pause();
-                musicBtn.classList.remove('playing');
-                musicBtn.querySelector('.text').textContent = 'Ouvir o Campo';
+                audioFundo.pause();
+                btnMusica.innerHTML = "🎵 Ouvir o Som do Campo";
+                btnMusica.setAttribute("aria-pressed", "false");
             }
         });
     }
 
-    /* ==========================================================================
-       2. BOTÃO VOLTAR AO TOPO
-       ========================================================================== */
-    const backToTopBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-            backToTopBtn.style.display = 'flex';
-        } else {
-            backToTopBtn.style.display = 'none';
-        }
-    });
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    // ==========================================
+    // 2. PAINEL DE ESTATÍSTICAS ANIMADAS (CONTADORES)
+    // ==========================================
+    const contadores = document.querySelectorAll(".numero-contador");
+    
+    const animarContadores = () => {
+        contadores.forEach(contador => {
+            const atualizarContador = () => {
+                const alvo = +contador.getAttribute("data-alvo");
+                const valorAtual = +contador.innerText;
+                
+                // Define a velocidade da animação com base no tamanho do número
+                const incremento = alvo / 50; 
 
-    /* ==========================================================================
-       3. ANIMATION SCROLL REVEAL (Correção de Visualização das Seções)
-       ========================================================================== */
-    const revealElements = document.querySelectorAll('.reveal');
-    const checkReveal = () => {
-        const triggerBottom = window.innerHeight * 0.88;
-        revealElements.forEach(el => {
-            const boxTop = el.getBoundingClientRect().top;
-            if (boxTop < triggerBottom) {
-                el.classList.add('visible');
-            }
-        });
-    };
-    window.addEventListener('scroll', checkReveal);
-    checkReveal(); // Execução imediata pós carregamento
-
-    /* ==========================================================================
-       4. CONTADORES NUMÉRICOS ANIMADOS
-       ========================================================================== */
-    const counters = document.querySelectorAll('.counter');
-    let countersStarted = false;
-
-    const startCounters = () => {
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            const speed = target / 40;
-            const updateCount = () => {
-                const current = +counter.innerText;
-                if (current < target) {
-                    counter.innerText = Math.ceil(current + speed);
-                    setTimeout(updateCount, 30);
+                if (valorAtual < alvo) {
+                    contador.innerText = Math.ceil(valorAtual + incremento);
+                    setTimeout(atualizarContador, 25);
                 } else {
-                    counter.innerText = target;
+                    contador.innerText = alvo;
                 }
             };
-            updateCount();
+            atualizarContador();
         });
     };
 
-    window.addEventListener('scroll', () => {
-        const targetSec = document.getElementById('explorar');
-        if(!targetSec) return;
-        const pos = targetSec.getBoundingClientRect().top;
-        if(pos < window.innerHeight * 0.8 && !countersStarted) {
-            countersStarted = true;
-            startCounters();
-        }
-    });
+    // Ativa os contadores usando o IntersectionObserver quando o usuário rolar até a seção
+    const secaoEstatistica = document.getElementById("estatisticas");
+    if (secaoEstatistica) {
+        const observador = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animarContadores();
+                    observador.unobserve(entry.target); // Anima apenas uma vez
+                }
+            });
+        }, { threshold: 0.4 });
+        observador.observe(secaoEstatistica);
+    }
 
-    /* ==========================================================================
-       5. MAPA INTERATIVO (Dados Dinâmicos do Paraná e Fronteiras)
-       ========================================================================== */
-    const mapButtons = document.querySelectorAll('.map-btn');
-    const mapDisplay = document.getElementById('mapDisplay');
+    // ==========================================
+    // 3. MAPA INTERATIVO (PARANÁ E BRASIL)
+    // ==========================================
+    const tabPR = document.getElementById("tab-pr");
+    const tabBR = document.getElementById("tab-br");
+    const containerRegioes = document.getElementById("container-regioes");
+    const nomeRegiao = document.getElementById("nome-regiao");
+    const descricaoRegiao = document.getElementById("descricao-regiao");
+    const metricasRegiao = document.getElementById("metricas-regiao");
+    const culturaTxt = document.getElementById("cultura-txt");
+    const focoTxt = document.getElementById("foco-txt");
 
-    const regionData = {
-        'pr-norte': {
-            title: "Norte do Paraná",
-            desc: "Região forte no cultivo tradicional e tecnológico de grãos e fruticultura de alto rendimento.",
-            curiosity: "Destaque no monitoramento cooperativo de pragas por pequenos produtores que usam alertas digitais compartilhados."
+    // Banco de dados dinâmico do mapa
+    const dadosMapa = {
+        pr: {
+            "norte-pr": { nome: "Norte do Paraná", cultura: "Café, Milho e Soja", foco: "Manejo integrado de pragas e recuperação de microbacias", desc: "Região histórica com transição para sistemas altamente tecnológicos de rotação de culturas e preservação de solos produtivos." },
+            "oeste-pr": { nome: "Oeste do Paraná", cultura: "Soja, Milho e Avicultura", foco: "Uso em larga escala de Biogás e Biomassa", desc: "Referência mundial em cooperativismo. Transforma resíduos da pecuária e agricultura em energia limpa e biofertilizantes." },
+            "sul-pr": { nome: "Sul do Paraná", cultura: "Erva-Mate, Feijão e Silvicultura", foco: "Sistemas Agroflorestais e Agricultura Familiar", desc: "Destaca-se pela produção integrada com a preservação da Mata de Araucárias nativa e técnicas agrícolas tradicionais harmoniosas." }
         },
-        'pr-oeste': {
-            title: "Oeste Paranaense",
-            desc: "Referência absoluta em cooperativismo de grande escala para processamento de proteína animal e piscicultura.",
-            curiosity: "Pioneiro na transformação de dejetos de biomassa animal em biogás de energia limpa para abastecer granjas."
-        },
-        'pr-sul': {
-            title: "Campos Gerais e Sul",
-            desc: "Ponto forte da bacia leiteira paranaense de alta qualidade e grãos de inverno.",
-            curiosity: "Berço nacional e capital do Sistema de Plantio Direto, mantendo solos protegidos e ricos organicamente."
+        br: {
+            "norte-pr": { nome: "Região Centro-Oeste", cultura: "Algodão, Soja e Milho", foco: "Agricultura de Precisão e Carbono Neutro", desc: "Grandes extensões que lideram o uso de rastreabilidade via satélite e mitigação de emissões de gases de efeito estufa." },
+            "oeste-pr": { nome: "Região Nordeste", cultura: "Fruticultura Irrigada e Algodão", foco: "Irrigação por Gotejamento Automatizado", desc: "O Vale do São Francisco demonstra como a tecnologia de microirrigação economiza água e gera riqueza em áreas semiáridas." },
+            "sul-pr": { nome: "Região Sul (Geral)", cultura: "Arroz, Trigo, Soja e Uva", foco: "Plantio Direto e Conservação de Mananciais", desc: "Pioneira na conservação da palhada do solo, focando fortemente na proteção de rios e no controle biológico de pragas." }
         }
     };
 
-    mapButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            mapButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const key = btn.getAttribute('data-region');
-            const data = regionData[key];
-            if(data) {
-                mapDisplay.innerHTML = `
-                    <div class="fade-in">
-                        <h4>📍 ${data.title}</h4>
-                        <p style="font-size:0.95rem; margin-bottom:8px;">${data.desc}</p>
-                        <p><strong>Fator Sustentável:</strong> ${data.curiosity}</p>
-                    </div>
-                `;
-            }
-        });
-    });
+    let mapaAtual = "pr"; // Controla qual base de dados ler (PR ou BR)
 
-    /* ==========================================================================
-       6. CALCULADORA DE PEGADA AMBIENTAL MULTI-ETAPAS
-       ========================================================================== */
-    const steps = document.querySelectorAll('.quiz-step');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const submitQuizBtn = document.getElementById('submitQuizBtn');
-    const quizForm = document.getElementById('footprintForm');
-    const quizResult = document.getElementById('quizResult');
-    let currentStep = 0;
-
-    const updateStep = () => {
-        steps.forEach((st, i) => st.classList.toggle('active', i === currentStep));
-        prevBtn.disabled = currentStep === 0;
-        if(currentStep === steps.length - 1) {
-            nextBtn.classList.add('hide');
-            submitQuizBtn.classList.remove('hide');
+    const atualizarPontosDoMapa = (tipo) => {
+        const botoesPontos = containerRegioes.querySelectorAll(".regiao-ponto");
+        if (tipo === "pr") {
+            botoesPontos[0].innerText = "Norte do PR";
+            botoesPontos[1].innerText = "Oeste do PR";
+            botoesPontos[2].innerText = "Sul do PR";
         } else {
-            nextBtn.classList.remove('hide');
-            submitQuizBtn.classList.add('hide');
+            botoesPontos[0].innerText = "Centro-Oeste";
+            botoesPontos[1].innerText = "Nordeste";
+            botoesPontos[2].innerText = "Região Sul";
         }
+        
+        // Reseta o card lateral informativo
+        nomeRegiao.innerText = "Selecione uma Região";
+        descricaoRegiao.innerText = "Clique em um dos pontos do mapa ao lado para visualizar os dados detalhados.";
+        metricasRegiao.classList.add("hidden");
+        botoesPontos.forEach(p => p.classList.remove("ativa-ponto"));
     };
 
-    if(nextBtn && prevBtn) {
-        nextBtn.addEventListener('click', () => {
-            const inputs = steps[currentStep].querySelectorAll('input[type="radio"]');
-            let filled = false;
-            inputs.forEach(i => { if(i.checked) filled = true; });
-            if(!filled) { alert("Por favor, selecione uma resposta para avançar!"); return; }
-            currentStep++;
-            updateStep();
+    if (tabPR && tabBR) {
+        tabPR.addEventListener("click", () => {
+            mapaAtual = "pr";
+            tabPR.classList.add("ativa");
+            tabBR.classList.remove("ativa");
+            atualizarPontosDoMapa("pr");
         });
-        prevBtn.addEventListener('click', () => { currentStep--; updateStep(); });
-    }
 
-    if(quizForm) {
-        quizForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const data = new FormData(quizForm);
-            let score = 0;
-            for(let v of data.values()) score += parseInt(v);
-
-            quizForm.classList.add('hide');
-            quizResult.classList.remove('hide');
-
-            let titleEval = "";
-            let textEval = "";
-
-            if(score <= 30) {
-                titleEval = "Pegada Perfeita e Sustentável! 🌱";
-                textEval = "Seus hábitos mostram um profundo respeito com a cadeia do campo. Ao escolher pequenos produtores e reduzir o desperdício, você diminui a pressão sobre o uso de recursos como solo e água.";
-            } else if(score <= 55) {
-                titleEval = "Impacto Moderado ⚠️";
-                textEval = "Bom trabalho, mas pequenos ajustes podem diminuir seu peso ambiental. Tente verificar a procedência das suas compras e evitar o desperdício alimentar orgânico na cozinha.";
-            } else {
-                titleEval = "Alta Pegada de Consumo 🚨";
-                textEval = "Seu padrão gera alta pressão na agricultura comercial tradicional. O descarte excessivo de comida e o foco em alimentos pesadamente processados exige maior gasto hídrico e químico nas safras.";
-            }
-
-            quizResult.innerHTML = `
-                <div class="fade-in">
-                    <h4>Resultado do Diagnóstico</h4>
-                    <div class="result-score">${score} Pontos</div>
-                    <p><strong>${titleEval}</strong></p>
-                    <p style="font-size:0.9rem; margin-top:10px; text-align:justify;">${textEval}</p>
-                    <button type="button" onclick="window.location.reload()" class="btn-primary" style="margin-top:15px; padding:8px 20px;">Refazer</button>
-                </div>
-            `;
+        tabBR.addEventListener("click", () => {
+            mapaAtual = "br";
+            tabBR.classList.add("ativa");
+            tabPR.classList.remove("ativa");
+            atualizarPontosDoMapa("br");
         });
     }
 
-    /* ==========================================================================
-       7. CARROSSEL NATIVO (Slideshow)
-       ========================================================================== */
-    const slides = document.querySelectorAll('.carousel-slide');
-    const caroPrev = document.getElementById('caroPrev');
-    const caroNext = document.getElementById('caroNext');
-    let cSlide = 0;
+    if (containerRegioes) {
+        containerRegioes.addEventListener("click", (e) => {
+            if (e.target.classList.contains("regiao-ponto")) {
+                // Remove destaque dos outros pontos
+                containerRegioes.querySelectorAll(".regiao-ponto").forEach(p => p.classList.remove("ativa-ponto"));
+                // Destaca o ponto clicado
+                e.target.classList.add("ativa-ponto");
 
-    const changeSlide = (idx) => {
-        slides.forEach(s => s.classList.remove('active'));
-        if(idx >= slides.length) cSlide = 0;
-        else if(idx < 0) cSlide = slides.length - 1;
-        else cSlide = idx;
-        slides[cSlide].classList.add('active');
-    };
+                const IDRegiao = e.target.getAttribute("data-regiao");
+                const informacoes = dadosMapa[mapaAtual][IDRegiao];
 
-    if(caroNext && caroPrev) {
-        caroNext.addEventListener('click', () => changeSlide(cSlide + 1));
-        caroPrev.addEventListener('click', () => changeSlide(cSlide - 1));
-        setInterval(() => changeSlide(cSlide + 1), 6000);
-    }
-
-    /* ==========================================================================
-       8. RESPOSTAS DA MASCOTE PURE
-       ========================================================================== */
-    const faqButtons = document.querySelectorAll('.faq-btn');
-    const assistantResponse = document.getElementById('assistantResponse');
-
-    const answers = {
-        'agro': "O segredo está no *Plantio Direto* e no manejo por dados. Deixando a palhada protetora da safra passada intacta, a água da chuva penetra sem causar erosão, nutrindo a microfauna orgânica de modo natural e contínuo.",
-        'agrinho': "O *Agrinho* é o principal motor educacional de campo da FAEP, motivando estudantes paranaenses a pesquisar e desenvolver soluções reais e éticas integrando a força urbana com a sabedoria da vida rural."
-    };
-
-    faqButtons.forEach(b => {
-        b.addEventListener('click', () => {
-            const q = b.getAttribute('data-question');
-            if(answers[q]) {
-                assistantResponse.classList.remove('hidden');
-                assistantResponse.innerHTML = <p class="fade-in">🤖🌾 <strong>PURE:</strong> ${answers[q]}</p>;
+                if (informacoes) {
+                    nomeRegiao.innerText = informacoes.nome;
+                    descricaoRegiao.innerText = informacoes.desc;
+                    culturaTxt.innerText = informacoes.culture || informacoes.cultura;
+                    focoTxt.innerText = informacoes.foco;
+                    metricasRegiao.classList.remove("hidden");
+                }
             }
         });
-    });
+    }
+
+    // ==========================================
+    // 4. ECO-CALCULADORA SUSTENTÁVEL
+    // ==========================================
+    const btnCalcular = document.getElementById("btn-calcular");
+    const resultadoPainel = document.getElementById("resultado-calculadora");
+
+    if (btnCalcular) {
+        btnCalcular.addEventListener("click", () => {
+            const area = parseFloat(document.getElementById("tamanho-area").value);
+            const manejo = document.getElementById("tipo-manejo").value;
+
+            if (!area || area <= 0 || !manejo) {
+                alert("Por favor, preencha todos os campos da calculadora corretamente!");
+                return;
+            }
+
+            let economiaAguaPorHectare = 0;
+            let carbonoRetidoPorHectare = 0;
+            let nivelSustentabilidade = "";
+
+            // Lógica e cálculos simulados com base científica real de manejo agrícola
+            switch (manejo) {
+                case "convencional":
+                    economiaAguaPorHectare = 0;
+                    carbonoRetidoPorHectare = -50; // Impacto negativo
+                    nivelSustentabilidade = "Crítico (Manejo tradicional com alto desgaste)";
+                    break;
+                case "precisao":
+                    economiaAguaPorHectare = 15000; // Litros por safra
+                    carbonoRetidoPorHectare = 120; // kg/CO2
+                    nivelSustentabilidade = "Avançado (Excelente uso de recursos hídricos)";
+                    break;
+                case "direto":
+                    economiaAguaPorHectare = 8000;
+                    carbonoRetidoPorHectare = 350; // Retém muito carbono na palhada do solo
+                    nivelSustentabilidade = "Excelente (Solo protegido e alta fixação de carbono)";
+                    break;
+                case "total":
+                    economiaAguaPorHectare = 22000;
+                    carbonoRetidoPorHectare = 500;
+                    nivelSustentabilidade = "Nível Campeão Sustentável (Equilíbrio Futurista)";
+                    break;
+            }
+
+            // Exibe os totais baseados na área informada
+            const totalAgua = economiaAguaPorHectare * area;
+            const totalCarbono = carbonoRetidoPorHectare * area;
+
+            document.getElementById("res-agua").innerText = totalAgua <= 0 ? "0 Litros" : `${totalAgua.toLocaleString('pt-BR')} Litros`;
+            document.getElementById("res-carbono").innerText = `${totalCarbono.toLocaleString('pt-BR')} kg/CO₂`;
+            document.getElementById("res-nivel").innerText = nivelSustentabilidade;
+
+            resultadoPainel.classList.remove("hidden");
+            resultadoPainel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        });
+    }
+
+    // ==========================================
+    // 5. GERADOR DE CURIOSIDADES ALEATÓRIAS (PARANÁ)
+    // ==========================================
+    const curiosidades = [
+        "O Paraná possui leis rigorosas de proteção a bacias hidrográficas rurais, fazendo com que o agronegócio trabalhe lado a lado com as reservas de água doce do estado.",
+        "O Sistema de Plantio Direto, essencial para evitar a erosão, foi consolidado e ganhou força nacional através de testes pioneiros em solo paranaense nos anos 1970.",
+        "Mais de 70% das propriedades rurais do Paraná pertencem à Agricultura Familiar, provando que a produção em pequena escala sustenta nossas cidades.",
+        "As maiores cooperativas agroindustriais da América Latina estão localizadas no Paraná, investindo milhões anualmente em inovação ecológica e energia renovável.",
+        "O Concurso Agrinho foi criado no Paraná e promove há décadas a conscientização ambiental entre as gerações que representam o futuro do campo."
+    ];
+
+    const btnCuriosidade = document.getElementById("btn-proxima-curiosidade");
+    const textoCuriosidade = document.getElementById("texto-curiosidade");
+
+    if (btnCuriosidade && textoCuriosidade) {
+        btnCuriosidade.addEventListener("click", () => {
+            // Sorteia um índice do array diferente do atual de forma simples
+            const indiceAleatorio = Math.floor(Math.random() * curiosidades.length);
+            textoCuriosidade.style.opacity = 0;
+            
+            setTimeout(() => {
+                textoCuriosidade.innerText = curiosidades[indiceAleatorio];
+                textoCuriosidade.style.opacity = 1;
+            }, 200);
+        });
+    }
+
+    // ==========================================
+    // 6. GALERIA INTERATIVA (CARROSSEL)
+    // ==========================================
+    const itensCarrossel = document.querySelectorAll(".carrossel-item");
+    const btnPrev = document.getElementById("carrossel-prev");
+    const btnNext = document.getElementById("carrossel-next");
+    let slideAtual = 0;
+
+    const mostrarSlide = (indice) => {
+        itensCarrossel.forEach(item => item.classList.remove("ativo"));
+        
+        if (indice >= itensCarrossel.length) slideAtual = 0;
+        else if (indice < 0) slideAtual = itensCarrossel.length - 1;
+        else slideAtual = indice;
+
+        itensCarrossel[slideAtual].classList.add("ativo");
+    };
+
+    if (btnPrev && btnNext && itensCarrossel.length > 0) {
+        btnNext.addEventListener("click", () => mostrarSlide(slideAtual + 1));
+        btnPrev.addEventListener("click", () => mostrarSlide(slideAtual - 1));
+
+        // Rotação automática a cada 6 segundos para dinamismo visual
+        setInterval(() => {
+            mostrarSlide(slideAtual + 1);
+        }, 6000);
+    }
+
+    // ==========================================
+    // 7. ASSISTENTE VIRTUAL INTERATIVO (MASCOTE)
+    // ==========================================
+    const assistente = document.getElementById("assistente-virtual");
+    const textoBalao = document.getElementById("texto-balao");
+
+    const dicasMascote = [
+        "Você sabia que os drones agrícolas evitam o desperdício aplicando insumos cirurgicamente apenas onde há pragas?",
+        "Navegue até a seção 'Nossa Essência' para conhecer a história inspiradora da minha família com a terra!",
+        "Faça uma simulação na nossa Eco-Calculadora e descubra quanta água a automação no campo pode economizar.",
+        "O equilíbrio perfeito existe: produzir em abundância mantendo as florestas em pé e saudáveis!",
+        "Confira a nossa Linha do Tempo para ver o salto gigante que demos da força braçal até a Inteligência Artificial!"
+    ];
+
+    if (assistente && textoBalao) {
+        assistente.addEventListener("click", () => {
+            const dicaAleatoria = Math.floor(Math.random() * dicasMascote.length);
+            textoBalao.innerText = dicasMascote[dicaAleatoria];
+            
+            // Pequeno efeito visual de balanço no avatar ao interagir
+            const avatar = assistente.querySelector(".mascote-avatar");
+            avatar.style.transform = "scale(1.2) rotate(10deg)";
+            setTimeout(() => {
+                avatar.style.transform = "";
+            }, 300);
+        });
+    }
+
+    // ==========================================
+    // 8. MENU HAMBÚRGUER (RESPONSIVIDADE MÓVEL)
+    // ==========================================
+    const menuHamburguer = document.querySelector(".menu-hamburguer");
+    const listaMenu = document.querySelector(".lista-menu");
+
+    if (menuHamburguer && listaMenu) {
+        menuHamburguer.addEventListener("click", () => {
+            const expandido = menuHamburguer.getAttribute("aria-expanded") === "true" || false;
+            menuHamburguer.setAttribute("aria-expanded", !expandido);
+            listaMenu.classList.toggle("hidden"); // Alterna visualização no mobile
+        });
+    }
 });
+
