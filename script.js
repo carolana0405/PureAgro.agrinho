@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const audioFundo = document.getElementById("audio-fundo");
 
     if (btnMusica && audioFundo) {
-        // Reduz o volume para ficar uma música de fundo suave e agradável
         audioFundo.volume = 0.2; 
 
         btnMusica.addEventListener("click", () => {
@@ -39,8 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const atualizarContador = () => {
                 const alvo = +contador.getAttribute("data-alvo");
                 const valorAtual = +contador.innerText;
-                
-                // Define a velocidade da animação com base no tamanho do número
                 const incremento = alvo / 50; 
 
                 if (valorAtual < alvo) {
@@ -54,14 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // Ativa os contadores usando o IntersectionObserver quando o usuário rolar até a seção
     const secaoEstatistica = document.getElementById("estatisticas");
     if (secaoEstatistica) {
         const observador = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     animarContadores();
-                    observador.unobserve(entry.target); // Anima apenas uma vez
+                    observador.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.4 });
@@ -80,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const culturaTxt = document.getElementById("cultura-txt");
     const focoTxt = document.getElementById("foco-txt");
 
-    // Banco de dados dinâmico do mapa
     const dadosMapa = {
         pr: {
             "norte-pr": { nome: "Norte do Paraná", cultura: "Café, Milho e Soja", foco: "Manejo integrado de pragas e recuperação de microbacias", desc: "Região histórica com transição para sistemas altamente tecnológicos de rotação de culturas e preservação de solos produtivos." },
@@ -94,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    let mapaAtual = "pr"; // Controla qual base de dados ler (PR ou BR)
+    let mapaAtual = "pr";
 
     const atualizarPontosDoMapa = (tipo) => {
         const botoesPontos = containerRegioes.querySelectorAll(".regiao-ponto");
@@ -108,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
             botoesPontos[2].innerText = "Região Sul";
         }
         
-        // Reseta o card lateral informativo
         nomeRegiao.innerText = "Selecione uma Região";
         descricaoRegiao.innerText = "Clique em um dos pontos do mapa ao lado para visualizar os dados detalhados.";
         metricasRegiao.classList.add("hidden");
@@ -134,9 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (containerRegioes) {
         containerRegioes.addEventListener("click", (e) => {
             if (e.target.classList.contains("regiao-ponto")) {
-                // Remove destaque dos outros pontos
                 containerRegioes.querySelectorAll(".regiao-ponto").forEach(p => p.classList.remove("ativa-ponto"));
-                // Destaca o ponto clicado
                 e.target.classList.add("ativa-ponto");
 
                 const IDRegiao = e.target.getAttribute("data-regiao");
@@ -145,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (informacoes) {
                     nomeRegiao.innerText = informacoes.nome;
                     descricaoRegiao.innerText = informacoes.desc;
-                    culturaTxt.innerText = informacoes.culture || informacoes.cultura;
+                    culturaTxt.innerText = informacoes.cultura;
                     focoTxt.innerText = informacoes.foco;
                     metricasRegiao.classList.remove("hidden");
                 }
@@ -173,21 +165,20 @@ document.addEventListener("DOMContentLoaded", () => {
             let carbonoRetidoPorHectare = 0;
             let nivelSustentabilidade = "";
 
-            // Lógica e cálculos simulados com base científica real de manejo agrícola
             switch (manejo) {
                 case "convencional":
                     economiaAguaPorHectare = 0;
-                    carbonoRetidoPorHectare = -50; // Impacto negativo
+                    carbonoRetidoPorHectare = -50;
                     nivelSustentabilidade = "Crítico (Manejo tradicional com alto desgaste)";
                     break;
                 case "precisao":
-                    economiaAguaPorHectare = 15000; // Litros por safra
-                    carbonoRetidoPorHectare = 120; // kg/CO2
+                    economiaAguaPorHectare = 15000;
+                    carbonoRetidoPorHectare = 120;
                     nivelSustentabilidade = "Avançado (Excelente uso de recursos hídricos)";
                     break;
                 case "direto":
                     economiaAguaPorHectare = 8000;
-                    carbonoRetidoPorHectare = 350; // Retém muito carbono na palhada do solo
+                    carbonoRetidoPorHectare = 350;
                     nivelSustentabilidade = "Excelente (Solo protegido e alta fixação de carbono)";
                     break;
                 case "total":
@@ -197,7 +188,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     break;
             }
 
-            // Exibe os totais baseados na área informada
             const totalAgua = economiaAguaPorHectare * area;
             const totalCarbono = carbonoRetidoPorHectare * area;
 
@@ -226,7 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btnCuriosidade && textoCuriosidade) {
         btnCuriosidade.addEventListener("click", () => {
-            // Sorteia um índice do array diferente do atual de forma simples
             const indiceAleatorio = Math.floor(Math.random() * curiosidades.length);
             textoCuriosidade.style.opacity = 0;
             
@@ -259,7 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btnNext.addEventListener("click", () => mostrarSlide(slideAtual + 1));
         btnPrev.addEventListener("click", () => mostrarSlide(slideAtual - 1));
 
-        // Rotação automática a cada 6 segundos para dinamismo visual
         setInterval(() => {
             mostrarSlide(slideAtual + 1);
         }, 6000);
@@ -284,7 +272,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const dicaAleatoria = Math.floor(Math.random() * dicasMascote.length);
             textoBalao.innerText = dicasMascote[dicaAleatoria];
             
-            // Pequeno efeito visual de balanço no avatar ao interagir
             const avatar = assistente.querySelector(".mascote-avatar");
             avatar.style.transform = "scale(1.2) rotate(10deg)";
             setTimeout(() => {
@@ -303,8 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
         menuHamburguer.addEventListener("click", () => {
             const expandido = menuHamburguer.getAttribute("aria-expanded") === "true" || false;
             menuHamburguer.setAttribute("aria-expanded", !expandido);
-            listaMenu.classList.toggle("hidden"); // Alterna visualização no mobile
+            listaMenu.classList.toggle("hidden");
         });
     }
 });
-
