@@ -1,36 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
-       1. SISTEMA DE AUDIO (Música Ambiente Opcional)
+       1. SISTEMA DE ÁUDIO SUAVE
        ========================================================================== */
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
+    if(bgMusic) bgMusic.volume = 0.20;
 
-    // Configura o volume inicial baixo para manter a suavidade
-    bgMusic.volume = 0.25;
+    if(musicBtn && bgMusic) {
+        musicBtn.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play().then(() => {
+                    musicBtn.classList.add('playing');
+                    musicBtn.querySelector('.text').textContent = 'Música Ativa';
+                }).catch(() => console.log("Interação necessária para ativar áudio."));
+            } else {
+                bgMusic.pause();
+                musicBtn.classList.remove('playing');
+                musicBtn.querySelector('.text').textContent = 'Ouvir o Campo';
+            }
+        });
+    }
 
-    musicBtn.addEventListener('click', () => {
-        if (bgMusic.paused) {
-            bgMusic.play().then(() => {
-                musicBtn.classList.add('playing');
-                musicBtn.querySelector('.text').textContent = 'Música Ativa';
-            }).catch(err => {
-                console.log("Interação prévia do usuário necessária para tocar o áudio.", err);
-            });
+    /* ==========================================================================
+       2. BOTÃO VOLTAR AO TOPO
+       ========================================================================== */
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTopBtn.style.display = 'flex';
         } else {
-            bgMusic.pause();
-            musicBtn.classList.remove('playing');
-            musicBtn.querySelector('.text').textContent = 'Ouvir o Campo';
+            backToTopBtn.style.display = 'none';
         }
+    });
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     /* ==========================================================================
-       2. SCROLL REVEAL (Animações Suaves de Entrada)
+       3. ANIMATION SCROLL REVEAL (Correção de Visualização das Seções)
        ========================================================================== */
     const revealElements = document.querySelectorAll('.reveal');
-
     const checkReveal = () => {
-        const triggerBottom = window.innerHeight * 0.85;
+        const triggerBottom = window.innerHeight * 0.88;
         revealElements.forEach(el => {
             const boxTop = el.getBoundingClientRect().top;
             if (boxTop < triggerBottom) {
@@ -38,27 +50,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     };
-
     window.addEventListener('scroll', checkReveal);
-    checkReveal(); // Execução inicial preventiva
+    checkReveal(); // Execução imediata pós carregamento
 
     /* ==========================================================================
-       3. CONTADORES ANIMADOS (Estatísticas)
+       4. CONTADORES NUMÉRICOS ANIMADOS
        ========================================================================== */
-    const counterSection = document.querySelector('.counter-section');
     const counters = document.querySelectorAll('.counter');
     let countersStarted = false;
 
     const startCounters = () => {
         counters.forEach(counter => {
             const target = +counter.getAttribute('data-target');
-            const speed = target / 60; // Ajusta a velocidade de incremento proporcionalmente
-            
+            const speed = target / 40;
             const updateCount = () => {
                 const current = +counter.innerText;
                 if (current < target) {
                     counter.innerText = Math.ceil(current + speed);
-                    setTimeout(updateCount, 25);
+                    setTimeout(updateCount, 30);
                 } else {
                     counter.innerText = target;
                 }
@@ -67,21 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Monitora o scroll para ativar os números somente ao entrar na tela
-    const monitorCounterScroll = () => {
-        if (!counterSection) return;
-        const sectionPos = counterSection.getBoundingClientRect().top;
-        const screenPos = window.innerHeight * 0.9;
-        
-        if (sectionPos < screenPos && !countersStarted) {
+    window.addEventListener('scroll', () => {
+        const targetSec = document.getElementById('explorar');
+        if(!targetSec) return;
+        const pos = targetSec.getBoundingClientRect().top;
+        if(pos < window.innerHeight * 0.8 && !countersStarted) {
             countersStarted = true;
             startCounters();
         }
-    };
-    window.addEventListener('scroll', monitorCounterScroll);
+    });
 
     /* ==========================================================================
-       4. MAPA INTERATIVO (Dados Dinâmicos das Regiões)
+       5. MAPA INTERATIVO (Dados Dinâmicos do Paraná e Fronteiras)
        ========================================================================== */
     const mapButtons = document.querySelectorAll('.map-btn');
     const mapDisplay = document.getElementById('mapDisplay');
@@ -89,53 +95,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const regionData = {
         'pr-norte': {
             title: "Norte do Paraná",
-            desc: "Região historicamente conhecida pelo café, hoje totalmente diversificada com tecnologia avançada.",
-            prod: "Soja, Milho, Trigo e Fruticultura especializada.",
-            curiosity: "Utilização pioneira de monitoramento via satélite para controle de cooperativas de pequenos produtores familiares."
+            desc: "Região forte no cultivo tradicional e tecnológico de grãos e fruticultura de alto rendimento.",
+            curiosity: "Destaque no monitoramento cooperativo de pragas por pequenos produtores que usam alertas digitais compartilhados."
         },
         'pr-oeste': {
-            title: "Oeste do Paraná",
-            desc: "A potência nacional em cooperativismo de produção agroindustrial de proteína animal e grãos.",
-            prod: "Aves, Suínos, Milho e Piscicultura integrada (Tilápia).",
-            curiosity: "Líder no uso de biodigestores em granjas para transformar dejetos animais em biogás e energia elétrica limpa."
+            title: "Oeste Paranaense",
+            desc: "Referência absoluta em cooperativismo de grande escala para processamento de proteína animal e piscicultura.",
+            curiosity: "Pioneiro na transformação de dejetos de biomassa animal em biogás de energia limpa para abastecer granjas."
         },
         'pr-sul': {
-            title: "Sul e Campos Gerais",
-            desc: "Ponto de referência em conservação e rotação sustentável de culturas de inverno e pecuária leiteira de ponta.",
-            prod: "Leite de alta qualidade, Batata, Cevada e Trigo.",
-            curiosity: "Berço do Sistema de Plantio Direto no Brasil, mantendo o solo protegido há mais de 50 anos consecutivamente."
-        },
-        'br-co': {
-            title: "Centro-Oeste Brasileiro",
-            desc: "O celeiro de exportação de grãos do país, focado na transição para a Agricultura de Precisão em larga escala.",
-            prod: "Soja, Algodão e Pecuária de Corte Extensiva/Intensiva.",
-            curiosity: "Fazendas utilizam aviões e drones de altíssima autonomia operados por IA para controle preciso e biológico de pragas."
-        },
-        'br-ne': {
-            title: "Nordeste (Região MATOPIBA)",
-            desc: "A grande fronteira agrícola moderna que cresce verticalmente baseada em tecnologia pesada de otimização de solos.",
-            prod: "Algodão, Soja e Grãos diversos.",
-            curiosity: "Sensores subterrâneos profundos gerenciam o estresse hídrico das plantas para aproveitar cada gota nos ciclos de chuva escassa."
+            title: "Campos Gerais e Sul",
+            desc: "Ponto forte da bacia leiteira paranaense de alta qualidade e grãos de inverno.",
+            curiosity: "Berço nacional e capital do Sistema de Plantio Direto, mantendo solos protegidos e ricos organicamente."
         }
     };
 
-    mapButtons.forEach(button => {
-        button.addEventListener('click', () => {
+    mapButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
             mapButtons.forEach(b => b.classList.remove('active'));
-            button.classList.add('active');
-
-            const regionKey = button.getAttribute('data-region');
-            const data = regionData[regionKey];
-
-            if (data) {
+            btn.classList.add('active');
+            const key = btn.getAttribute('data-region');
+            const data = regionData[key];
+            if(data) {
                 mapDisplay.innerHTML = `
-                    <div class="region-info-box fade-in">
+                    <div class="fade-in">
                         <h4>📍 ${data.title}</h4>
-                        <p>${data.desc}</p>
-                        <ul>
-                            <li><strong>Principais Culturas:</strong> ${data.prod}</li>
-                            <li><strong>Fator Sustentável:</strong> ${data.curiosity}</li>
-                        </ul>
+                        <p style="font-size:0.95rem; margin-bottom:8px;">${data.desc}</p>
+                        <p><strong>Fator Sustentável:</strong> ${data.curiosity}</p>
                     </div>
                 `;
             }
@@ -143,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       5. CALCULADORA DE PEGADA AMBIENTAL MULTI-STEPS
+       6. CALCULADORA DE PEGADA AMBIENTAL MULTI-ETAPAS
        ========================================================================== */
     const steps = document.querySelectorAll('.quiz-step');
     const nextBtn = document.getElementById('nextBtn');
@@ -153,14 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const quizResult = document.getElementById('quizResult');
     let currentStep = 0;
 
-    const updateStepView = () => {
-        steps.forEach((step, idx) => {
-            step.classList.toggle('active', idx === currentStep);
-        });
-
+    const updateStep = () => {
+        steps.forEach((st, i) => st.classList.toggle('active', i === currentStep));
         prevBtn.disabled = currentStep === 0;
-
-        if (currentStep === steps.length - 1) {
+        if(currentStep === steps.length - 1) {
             nextBtn.classList.add('hide');
             submitQuizBtn.classList.remove('hide');
         } else {
@@ -169,115 +151,93 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    nextBtn.addEventListener('click', () => {
-        // Validação simples se o campo atual está preenchido
-        const currentInputs = steps[currentStep].querySelectorAll('input[type="radio"]');
-        let answered = false;
-        currentInputs.forEach(input => { if(input.checked) answered = true; });
-
-        if(!answered) {
-            alert("Por favor, selecione uma opção para continuar!");
-            return;
-        }
-
-        if (currentStep < steps.length - 1) {
+    if(nextBtn && prevBtn) {
+        nextBtn.addEventListener('click', () => {
+            const inputs = steps[currentStep].querySelectorAll('input[type="radio"]');
+            let filled = false;
+            inputs.forEach(i => { if(i.checked) filled = true; });
+            if(!filled) { alert("Por favor, selecione uma resposta para avançar!"); return; }
             currentStep++;
-            updateStepView();
-        }
-    });
+            updateStep();
+        });
+        prevBtn.addEventListener('click', () => { currentStep--; updateStep(); });
+    }
 
-    prevBtn.addEventListener('click', () => {
-        if (currentStep > 0) {
-            currentStep--;
-            updateStepView();
-        }
-    });
+    if(quizForm) {
+        quizForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(quizForm);
+            let score = 0;
+            for(let v of data.values()) score += parseInt(v);
 
-    quizForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(quizForm);
-        let totalScore = 0;
+            quizForm.classList.add('hide');
+            quizResult.classList.remove('hide');
 
-        for (let value of formData.values()) {
-            totalScore += parseInt(value);
-        }
+            let titleEval = "";
+            let textEval = "";
 
-        quizForm.classList.add('hide');
-        quizResult.classList.remove('hide');
+            if(score <= 30) {
+                titleEval = "Pegada Perfeita e Sustentável! 🌱";
+                textEval = "Seus hábitos mostram um profundo respeito com a cadeia do campo. Ao escolher pequenos produtores e reduzir o desperdício, você diminui a pressão sobre o uso de recursos como solo e água.";
+            } else if(score <= 55) {
+                titleEval = "Impacto Moderado ⚠️";
+                textEval = "Bom trabalho, mas pequenos ajustes podem diminuir seu peso ambiental. Tente verificar a procedência das suas compras e evitar o desperdício alimentar orgânico na cozinha.";
+            } else {
+                titleEval = "Alta Pegada de Consumo 🚨";
+                textEval = "Seu padrão gera alta pressão na agricultura comercial tradicional. O descarte excessivo de comida e o foco em alimentos pesadamente processados exige maior gasto hídrico e químico nas safras.";
+            }
 
-        let evaluation = "";
-        let advice = "";
-
-        if (totalScore <= 35) {
-            evaluation = "Pegada Sustentável Excelente! 🌱";
-            advice = "Suas escolhas urbanas apoiam perfeitamente o produtor rural consciente. Você consome alimentos locais, evita o desperdício severo e valoriza a manutenção correta da cadeia biológica. Continue sendo um exemplo!";
-        } else if (totalScore <= 60) {
-            evaluation = "Pegada Ambiental Moderada ⚠️";
-            advice = "Você está no caminho certo, mas pode melhorar a sintonia com o campo. Tente prestar mais atenção à origem dos produtos no mercado (priorize feiras locais e cooperativas) e combata o desperdício doméstico.";
-        } else {
-            evaluation = "Pegada de Consumo Alta 🚨";
-            advice = "Suas escolhas diárias geram sobrecarga desnecessária na cadeia produtiva. O consumo excessivo de ultraprocessados e o alto índice de desperdício exigem mais recursos naturais do solo e da água do campo. Que tal começarmos mudando pequenos hábitos hoje?";
-        }
-
-        quizResult.innerHTML = `
-            <div class="fade-in">
-                <h4>Resultado da Análise</h4>
-                <div class="result-score">${totalScore} Pontos</div>
-                <p><strong>${evaluation}</strong></p>
-                <p style="margin-top: 15px; font-size: 0.95rem; text-align: justify;">${advice}</p>
-                <button type="button" onclick="window.location.reload()" class="btn-primary" style="margin-top:20px;">Refazer Teste</button>
-            </div>
-        `;
-    });
+            quizResult.innerHTML = `
+                <div class="fade-in">
+                    <h4>Resultado do Diagnóstico</h4>
+                    <div class="result-score">${score} Pontos</div>
+                    <p><strong>${titleEval}</strong></p>
+                    <p style="font-size:0.9rem; margin-top:10px; text-align:justify;">${textEval}</p>
+                    <button type="button" onclick="window.location.reload()" class="btn-primary" style="margin-top:15px; padding:8px 20px;">Refazer</button>
+                </div>
+            `;
+        });
+    }
 
     /* ==========================================================================
-       6. CARROSSEL DE IMAGENS NATIVO
+       7. CARROSSEL NATIVO (Slideshow)
        ========================================================================== */
     const slides = document.querySelectorAll('.carousel-slide');
     const caroPrev = document.getElementById('caroPrev');
     const caroNext = document.getElementById('caroNext');
-    let currentSlide = 0;
+    let cSlide = 0;
 
-    const showSlide = (index) => {
-        slides.forEach(slide => slide.classList.remove('active'));
-        
-        if (index >= slides.length) currentSlide = 0;
-        else if (index < 0) currentSlide = slides.length - 1;
-        else currentSlide = index;
-
-        slides[currentSlide].classList.add('active');
+    const changeSlide = (idx) => {
+        slides.forEach(s => s.classList.remove('active'));
+        if(idx >= slides.length) cSlide = 0;
+        else if(idx < 0) cSlide = slides.length - 1;
+        else cSlide = idx;
+        slides[cSlide].classList.add('active');
     };
 
-    caroNext.addEventListener('click', () => showSlide(currentSlide + 1));
-    caroPrev.addEventListener('click', () => showSlide(currentSlide - 1));
-
-    // Carrossel Automático Suave (Troca a cada 6 segundos)
-    setInterval(() => {
-        showSlide(currentSlide + 1);
-    }, 6000);
+    if(caroNext && caroPrev) {
+        caroNext.addEventListener('click', () => changeSlide(cSlide + 1));
+        caroPrev.addEventListener('click', () => changeSlide(cSlide - 1));
+        setInterval(() => changeSlide(cSlide + 1), 6000);
+    }
 
     /* ==========================================================================
-       7. ASSISTENTE VIRTUAL (PURE - FAQs Interativas)
+       8. RESPOSTAS DA MASCOTE PURE
        ========================================================================== */
     const faqButtons = document.querySelectorAll('.faq-btn');
-    const responseArea = document.getElementById('assistantResponse');
+    const assistantResponse = document.getElementById('assistantResponse');
 
-    const pureResponses = {
-        'oque-e': "A *Agricultura de Precisão* consiste em gerenciar a lavoura metro a metro, em vez de tratá-la como uma área única e uniforme. Usando GPS, sensores e dados, aplicamos fertilizantes ou água apenas onde realmente há necessidade. É o cérebro da tecnologia protegendo o bolso do produtor e o ecossistema!",
-        'agrinho': "O *Concurso Agrinho* é o maior programa de responsabilidade social e ambiental da FAEP. Há décadas ele incentiva estudantes e professores a pensarem em soluções éticas, sustentáveis e inovadoras para o campo, integrando a inteligência da escola com a prática das fazendas.",
-        'tecnologia': "Pelo contrário! A tecnologia de ponta traz o jovem de volta ao campo. Hoje, gerenciar uma fazenda exige conhecimentos em robótica, análise de dados e biologia avançada. Isso gera empregos qualificados no interior, impedindo o êxodo rural forçado.",
-        'equilibrio': "Produzimos sem desmatar através do aumento da eficiência vertical! Técnicas como o plantio direto, rotação de culturas e a recuperação de pastagens degradadas permitem dobrar a colheita no mesmo pedaço de chão que meu avô usava, protegendo integralmente as matas nativas."
+    const answers = {
+        'agro': "O segredo está no *Plantio Direto* e no manejo por dados. Deixando a palhada protetora da safra passada intacta, a água da chuva penetra sem causar erosão, nutrindo a microfauna orgânica de modo natural e contínuo.",
+        'agrinho': "O *Agrinho* é o principal motor educacional de campo da FAEP, motivando estudantes paranaenses a pesquisar e desenvolver soluções reais e éticas integrando a força urbana com a sabedoria da vida rural."
     };
 
-    faqButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const questionKey = btn.getAttribute('data-question');
-            const reply = pureResponses[questionKey];
-
-            if (reply) {
-                responseArea.classList.remove('hidden');
-                // Formatação simples simulando markdown básico para negrito
-                responseArea.innerHTML = <p class="fade-in">🤖🌾 <strong>PURE diz:</strong> ${reply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>;
+    faqButtons.forEach(b => {
+        b.addEventListener('click', () => {
+            const q = b.getAttribute('data-question');
+            if(answers[q]) {
+                assistantResponse.classList.remove('hidden');
+                assistantResponse.innerHTML = <p class="fade-in">🤖🌾 <strong>PURE:</strong> ${answers[q]}</p>;
             }
         });
     });
