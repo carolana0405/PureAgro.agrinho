@@ -1,1 +1,1094 @@
+/* ==========================================================================
+   PUREAGRO – TECNOLOGIA E SUSTENTABILIDADE (CONCURSO AGRINHO 2026)
+   ESTILO CENTRAL - DESIGN HUMANIZADO, ARTÍSTICO E RESPONSIVO
+   ========================================================================== */
+
+/* 1. VARIÁVEIS DE DESIGN (Paleta de Cores e Tipografia) */
+:root {
+    --azul-escuro: #1E3A5F;
+    --azul-medio: #3A6EA5;
+    --azul-claro: #A8D8FF;
+    --azul-fundo: #F4F8FC;
+    --branco: #FFFFFF;
+    --rosa-bebe: #F7D6E0;
+    --rosa-detalhe: #E8AEC0;
+    --texto-escuro: #2C3E50;
+    --texto-mutado: #566573;
+    
+    /* Fontes do Google Fonts */
+    --fonte-titulos: 'Playfair Display', serif;
+    --fonte-corpo: 'DM Sans', sans-serif;
+    
+    /* Efeito de transição padrão */
+    --transicao: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    
+    /* Cantos orgânicos que simulam traços manuais/folhas */
+    --cantos-organicos: 30px 15px 30px 15px;
+    --cantos-card: 20px 10px 20px 10px;
+}
+
+/* 2. CONFIGURAÇÕES GERAIS E ACESSIBILIDADE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    background-color: var(--azul-fundo);
+    color: var(--texto-escuro);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+/* Link de acessibilidade oculto (aparece com Tab) */
+.link-salto {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--azul-escuro);
+    color: var(--branco);
+    padding: 10px 20px;
+    z-index: 9999;
+    transition: top 0.2s;
+}
+.link-salto:focus {
+    top: 0;
+}
+
+/* Alinhamentos Globais */
+.alinhamento-centro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Estilização de Títulos e Subtítulos */
+.titulo-secao {
+    font-family: var(--fonte-titulos);
+    font-size: 2.5rem;
+    color: var(--azul-escuro);
+    margin-top: 5px;
+    position: relative;
+}
+
+.subtitulo-secao {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--azul-medio);
+    font-weight: 700;
+    display: block;
+}
+
+/* Elemento Decorativo que simula risco feito à mão */
+.sublinhado-artesanal {
+    position: relative;
+    display: inline-block;
+}
+.sublinhado-artesanal::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 4px;
+    background: var(--rosa-bebe);
+    border-radius: 50%; /* Faz parecer um risco de giz/caneta */
+}
+
+/* 3. PLAYER DE MÚSICA AMBIENTE */
+.player-ambiente {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.controlador-audio {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border: 2px solid var(--azul-claro);
+    padding: 10px 18px;
+    border-radius: var(--cantos-card);
+    font-family: var(--fonte-corpo);
+    font-weight: 600;
+    color: var(--azul-escuro);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: var(--transicao);
+}
+
+.controlador-audio:hover {
+    background: var(--rosa-bebe);
+    border-color: var(--rosa-detalhe);
+    transform: translateY(-2px);
+}
+
+/* 4. TOPO DO SITE (HEADER & NAV) */
+.topo-site {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(168, 216, 255, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.cabeçalho-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo-texto {
+    font-family: var(--fonte-titulos);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--azul-escuro);
+    letter-spacing: 1px;
+}
+
+.destaque-rosa {
+    color: var(--rosa-detalhe);
+    font-style: italic;
+}
+
+.slogan-marca {
+    font-size: 0.75rem;
+    color: var(--texto-mutado);
+    margin-top: -4px;
+}
+
+.lista-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.lista-menu a {
+    text-decoration: none;
+    color: var(--azul-escuro);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: var(--transicao);
+}
+
+.lista-menu a:hover {
+    background-color: var(--azul-claro);
+    color: var(--azul-escuro);
+}
+
+.menu-hamburguer {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* 5. SEÇÃO HOME (HERO) */
+.secao-hero {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E8F4FF 100%);
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.tag-ano {
+    background: var(--rosa-bebe);
+    color: var(--azul-escuro);
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.titulo-principal {
+    font-family: var(--fonte-titulos);
+    font-size: 3.5rem;
+    color: var(--azul-escuro);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.texto-hero {
+    font-size: 1.15rem;
+    color: var(--texto-mutado);
+    margin-bottom: 30px;
+}
+
+.hero-botoes {
+    display: flex;
+    gap: 15px;
+}
+
+.botao-principal, .botao-secundario {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: var(--cantos-organicos);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transicao);
+}
+
+.botao-principal {
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    box-shadow: 0 4px 15px rgba(30, 58, 95, 0.2);
+}
+
+.botao-principal:hover {
+    background-color: var(--azul-medio);
+    transform: translateY(-3px);
+}
+
+.botao-secundario {
+    background-color: transparent;
+    color: var(--azul-escuro);
+    border: 2px solid var(--azul-escuro);
+}
+
+.botao-secundario:hover {
+    background-color: var(--rosa-bebe);
+    border-color: var(--rosa-bebe);
+    transform: translateY(-3px);
+}
+
+.hero-imagem-wrapper {
+    position: relative;
+}
+
+.imagem-hero {
+    width: 100%;
+    height: auto;
+    border-radius: var(--cantos-organicos);
+    box-shadow: 0 15px 35px rgba(30, 58, 95, 0.1);
+    border: 3px solid var(--branco);
+}
+
+/* Detalhe de caderno de rascunhos (Esboço manual) */
+.decoracao-sketch {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px dashed var(--rosa-detalhe);
+    border-radius: 50%;
+    top: -20px;
+    right: -20px;
+    z-index: -1;
+}
+
+/* 6. SEÇÃO ESSÊNCIA HUMANA (SOBRE MIM) */
+.secao-essencia {
+    background-color: var(--branco);
+}
+
+.essencia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.20fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.essencia-imagens {
+    position: relative;
+}
+
+.imagem-essencia-principal {
+    width: 100%;
+    border-radius: var(--cantos-organicos);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.card-depoimento-sketch {
+    background: var(--rosa-bebe);
+    border: 2px dashed var(--azul-escuro);
+    padding: 20px;
+    border-radius: var(--cantos-card);
+    position: absolute;
+    bottom: -30px;
+    right: -20px;
+    width: 80%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transform: rotate(2deg);
+}
+
+.texto-sketch {
+    font-family: var(--fonte-titulos);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--azul-escuro);
+}
+
+.paragrafo {
+    margin-bottom: 20px;
+    color: var(--texto-escuro);
+    text-align: justify;
+}
+
+/* 7. O AGRO NO PARANÁ E NO BRASIL (CARDS) */
+.cards-agro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card-agro {
+    background: var(--branco);
+    padding: 40px 30px;
+    border-radius: var(--cantos-organicos);
+    box-shadow: 0 10px 30px rgba(30, 58, 95, 0.03);
+    border: 1px solid rgba(168, 216, 255, 0.2);
+    transition: var(--transicao);
+}
+
+.card-agro:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(30, 58, 95, 0.08);
+    border-color: var(--rosa-bebe);
+}
+
+.card-icone {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.card-agro h3 {
+    font-family: var(--fonte-titulos);
+    color: var(--azul-escuro);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* 8. PAINEL DE ESTATÍSTICAS ANIMADAS */
+.secao-estatisticas {
+    background: linear-gradient(135deg, var(--azul-escuro) 0%, #112237 100%);
+    color: var(--branco);
+}
+
+.estatisticas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+}
+
+.numero-contador {
+    font-family: var(--fonte-titulos);
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--rosa-bebe);
+    display: inline-block;
+}
+
+.sufixo {
+    font-size: 2rem;
+    color: var(--azul-claro);
+    font-weight: bold;
+}
+
+.estatistica-legenda {
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    padding: 0 15px;
+}
+
+/* 9. LINHA DO TEMPO DA EVOLUÇÃO */
+.secao-linha-tempo {
+    background-color: var(--branco);
+}
+
+.cronologia {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* A linha central guia */
+.cronologia::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--azul-claro), var(--azul-escuro), var(--rosa-bebe));
+    transform: translateX(-50%);
+}
+
+.bloco-cronologico {
+    position: relative;
+    width: 50%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+/* Alternar lados dos blocos */
+.bloco-cronologico:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+.bloco-cronologico:nth-child(even) {
+    left: 50%;
+    text-align: left;
+}
+
+.ponto-marcador {
+    position: absolute;
+    top: 30px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--branco);
+    border: 4px solid var(--azul-escuro);
+    z-index: 1;
+}
+
+.bloco-cronologico:nth-child(odd) .ponto-marcador {
+    right: -8px;
+}
+.bloco-cronologico:nth-child(even) .ponto-marcador {
+    left: -8px;
+}
+
+.conteudo-cronologico {
+    background: var(--azul-fundo);
+    padding: 25px;
+    border-radius: var(--cantos-card);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    border: 1px solid rgba(168, 216, 255, 0.2);
+}
+
+.ano-cronologico {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--azul-escuro);
+    color: var(--branco);
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.bloco-cronologico:last-child .ano-cronologico {
+    background: var(--rosa-detalhe);
+    color: var(--azul-escuro);
+}
+
+.conteudo-cronologico h3 {
+    font-family: var(--fonte-titulos);
+    color: var(--azul-escuro);
+    margin-bottom: 10px;
+}
+
+/* 10. SEÇÃO ANTES E DEPOIS */
+.antes-depois-container {
+    display: flex;
+    background: var(--branco);
+    border-radius: var(--cantos-organicos);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    overflow: hidden;
+    border: 2px solid rgba(168, 216, 255, 0.2);
+}
+
+.coluna-antes, .coluna-depois {
+    flex: 1;
+    padding: 50px;
+}
+
+.coluna-antes {
+    background-color: #FAF4F5;
+}
+
+.divisoria-sketch {
+    width: 2px;
+    background: dashed var(--azul-claro);
+    border-left: 2px dashed rgba(30, 58, 95, 0.2);
+}
+
+.tag-comparativa {
+    display: inline-block;
+    padding: 6px 18px;
+    font-weight: 700;
+    border-radius: 50px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.tag-comparativa.antes {
+    background-color: #E6B0AA;
+    color: #78281F;
+}
+
+.tag-comparativa.depois {
+    background-color: var(--azul-claro);
+    color: var(--azul-escuro);
+}
+
+.lista-comparativa {
+    list-style: none;
+}
+
+.lista-comparativa li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+}
+
+.coluna-antes .lista-comparativa li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: #C0392B;
+    font-weight: bold;
+}
+
+.coluna-depois .lista-comparativa li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--azul-escuro);
+    font-weight: bold;
+}
+
+/* 11. MAPA INTERATIVO SIMPLIFICADO */
+.mapa-wrapper {
+    background: var(--branco);
+    border-radius: var(--cantos-organicos);
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.abas-mapa {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.aba-item {
+    background: var(--azul-fundo);
+    border: 2px solid var(--azul-claro);
+    padding: 10px 25px;
+    font-family: var(--fonte-corpo);
+    font-weight: 600;
+    color: var(--azul-escuro);
+    cursor: pointer;
+    border-radius: var(--cantos-card);
+    transition: var(--transicao);
+}
+
+.aba-item.ativa, .aba-item:hover {
+    background: var(--azul-escuro);
+    color: var(--branco);
+    border-color: var(--azul-escuro);
+}
+
+.mapa-conteudo-flex {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.mapa-grafico-sketch {
+    background: #EBF4FC;
+    height: 350px;
+    border-radius: var(--cantos-organicos);
+    position: relative;
+    border: 2px dashed var(--azul-medio);
+}
+
+/* Simulação geométrica de botões flutuantes no mapa */
+.regiao-ponto {
+    position: absolute;
+    background: var(--branco);
+    border: 2px solid var(--azul-escuro);
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--azul-escuro);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: var(--transicao);
+}
+
+.regiao-ponto:hover, .regiao-ponto.ativa-ponto {
+    background: var(--rosa-bebe);
+    transform: scale(1.05);
+    border-color: var(--rosa-detalhe);
+}
+
+.p1 { top: 25%; left: 60%; }
+.p2 { top: 50%; left: 15%; }
+.p3 { top: 70%; left: 45%; }
+
+.mapa-detalhes-card {
+    background: var(--azul-fundo);
+    padding: 35px;
+    border-radius: var(--cantos-card);
+    border-left: 5px solid var(--azul-escuro);
+}
+
+.mapa-detalhes-card h3 {
+    font-family: var(--fonte-titulos);
+    color: var(--azul-escuro);
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+.dados-destaque-mapa {
+    margin-top: 20px;
+    background: var(--branco);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 12. ECO-CALCULADORA SUSTENTÁVEL */
+.calculadora-box {
+    background: var(--branco);
+    border-radius: var(--cantos-organicos);
+    padding: 50px;
+    box-shadow: 0 15px 40px rgba(30, 58, 95, 0.05);
+    border: 1px solid rgba(168, 216, 255, 0.3);
+}
+
+.grid-form-calculadora {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 20px;
+    align-items: flex-end;
+    margin-bottom: 40px;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-grupo label {
+    font-weight: 600;
+    color: var(--azul-escuro);
+    font-size: 0.95rem;
+}
+
+.input-estilizado, .select-estilizado {
+    padding: 12px 18px;
+    border: 2px solid var(--azul-claro);
+    border-radius: var(--cantos-card);
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    color: var(--texto-escuro);
+    background-color: var(--azul-fundo);
+    outline: none;
+    transition: var(--transicao);
+}
+
+.input-estilizado:focus, .select-estilizado:focus {
+    border-color: var(--azul-escuro);
+    background-color: var(--branco);
+}
+
+.botao-calculadora {
+    background: var(--azul-escuro);
+    color: var(--branco);
+    border: none;
+    padding: 14px 28px;
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: var(--cantos-organicos);
+    cursor: pointer;
+    transition: var(--transicao);
+    height: 52px;
+}
+
+.botao-calculadora:hover {
+    background: var(--rosa-detalhe);
+    color: var(--azul-escuro);
+}
+
+/* Painel de Resultados Revelados */
+.resultado-painel {
+    background: #EBF9F6;
+    border: 2px solid #A3E4D7;
+    border-radius: var(--cantos-card);
+    padding: 30px;
+    animation: fadeIn 0.5s ease;
+}
+
+.resultado-painel h3 {
+    font-family: var(--fonte-titulos);
+    color: #117A65;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cards-resultado-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card-res {
+    background: var(--branco);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.card-res h4 {
+    font-size: 0.9rem;
+    color: var(--texto-mutado);
+    margin-bottom: 5px;
+}
+
+.valor-res {
+    font-family: var(--fonte-titulos);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--azul-escuro);
+}
+
+/* 13. GERADOR DE CURIOSIDADES DO PARANÁ */
+.card-curiosidade-central {
+    background: linear-gradient(135deg, var(--rosa-bebe) 0%, #FADBD8 100%);
+    padding: 40px;
+    border-radius: var(--cantos-organicos);
+    text-align: center;
+    border: 2px dashed var(--rosa-detalhe);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+}
+
+.lampada-icone {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.texto-curiosidade {
+    font-size: 1.25rem;
+    font-family: var(--fonte-titulos);
+    color: var(--azul-escuro);
+    margin: 15px 0 25px 0;
+    min-height: 60px;
+}
+
+.botao-curiosidade {
+    background: var(--azul-escuro);
+    color: var(--branco);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-family: var(--fonte-corpo);
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.botao-curiosidade:hover {
+    background: var(--branco);
+    color: var(--azul-escuro);
+}
+
+/* 14. GALERIA INTERATIVA (CARROSSEL) */
+.carrossel-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: var(--cantos-organicos);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    border: 4px solid var(--branco);
+}
+
+.carrossel-trilho {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+    width: 100%;
+}
+
+.carrossel-item {
+    min-width: 100%;
+    position: relative;
+    display: none; /* Controlado via classe ativo */
+}
+
+.carrossel-item.ativo {
+    display: block;
+}
+
+.carrossel-item img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.carrossel-legenda {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(30, 58, 95, 0.9), transparent);
+    color: var(--branco);
+    padding: 30px 20px 20px 20px;
+    font-size: 1.1rem;
+    font-family: var(--fonte-titulos);
+}
+
+.carrossel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--azul-escuro);
+    transition: var(--transicao);
+    z-index: 10;
+}
+
+.carrossel-btn:hover {
+    background: var(--rosa-bebe);
+}
+
+.btn-prev { left: 20px; }
+.btn-next { right: 20px; }
+
+/* 15. SEÇÃO FUTURO DO AGRO & CONCLUSÃO */
+.secao-futuro {
+    background: var(--branco);
+    position: relative;
+}
+
+.futuro-container {
+    max-width: 800px;
+    background: var(--azul-fundo);
+    padding: 50px;
+    border-radius: var(--cantos-organicos);
+    border: 1px solid rgba(168, 216, 255, 0.3);
+}
+
+.assinatura-autoral {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px dashed var(--azul-claro);
+}
+
+.nome-autor {
+    font-family: var(--fonte-titulos);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--azul-escuro);
+}
+
+.detalhe-autor {
+    font-size: 0.9rem;
+    color: var(--texto-mutado);
+}
+
+/* 16. ASSISTENTE VIRTUAL FLUTUANTE (MASCOTE) */
+.assistente-container {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.assistente-balao-fala {
+    background: var(--branco);
+    border: 2px solid var(--azul-escuro);
+    border-radius: var(--cantos-card);
+    padding: 12px 18px;
+    max-width: 220px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    position: relative;
+    margin-bottom: 15px;
+}
+
+/* Triângulo do balão de fala */
+.assistente-balao-fala::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: var(--branco) transparent;
+    display: block;
+    width: 0;
+}
+.assistente-balao-fala::before {
+    content: '';
+    position: absolute;
+    bottom: -13px;
+    left: 19px;
+    border-width: 11px 11px 0;
+    border-style: solid;
+    border-color: var(--azul-escuro) transparent;
+    display: block;
+    width: 0;
+}
+
+.mascote-avatar {
+    font-size: 2.5rem;
+    background: var(--branco);
+    border: 3px solid var(--azul-escuro);
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: var(--transicao);
+}
+
+.assistente-container:hover .mascote-avatar {
+    transform: scale(1.1) rotate(-5deg);
+    background-color: var(--rosa-bebe);
+}
+
+/* 17. RODAPÉ DO SITE (FOOTER) */
+.rodape-site {
+    background-color: #0F1E31;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    border-top: 4px solid var(--rosa-bebe);
+}
+
+.rodape-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+    gap: 50px;
+}
+
+.logo-texto-rodape {
+    font-family: var(--fonte-titulos);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--branco);
+    display: block;
+    margin-bottom: 15px;
+}
+
+.rodape-links-rapidos h4, .rodape-creditos h4 {
+    color: var(--branco);
+    font-family: var(--fonte-titulos);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.rodape-links-rapidos ul {
+    list-style: none;
+}
+
+.rodape-links-rapidos ul li {
+    margin-bottom: 8px;
+}
+
+.rodape-links-rapidos a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transicao);
+}
+
+.rodape-links-rapidos a:hover {
+    color: var(--rosa-bebe);
+    padding-left: 5px;
+}
+
+.direitos {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* 18. ANIMAÇÕES E MEDIA QUERIES (RESPONSIVIDADE) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 992px) {
+    .hero-grid, .essencia-grid, .mapa-conteudo-flex {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .cards-agro-grid, .estatisticas-grid, .grid-form-calculadora, .cards-resultado-grid, .rodape-grid {
+        grid-template-columns: 1fr;
+    }
+    .titulo-principal {
+        font-size: 2.5rem;
+    }
+    .cronologia::before {
+        left: 20px;
+    }
+    .bloco-cronologico {
+        width: 100%;
+        left: 0 !important;
+        text-align: left !important;
+        padding-left: 50px;
+    }
+    .ponto-marcador {
+        left: 12px !important;
+    }
+    .card-depoimento-sketch {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
 
