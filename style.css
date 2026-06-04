@@ -3,7 +3,6 @@
    ESTILO CENTRAL - DESIGN HUMANIZADO, ARTÍSTICO E RESPONSIVO
    ========================================================================== */
 
-/* 1. VARIÁVEIS DE DESIGN (Paleta de Cores e Tipografia) */
 :root {
     --azul-escuro: #1E3A5F;
     --azul-medio: #3A6EA5;
@@ -15,19 +14,15 @@
     --texto-escuro: #2C3E50;
     --texto-mutado: #566573;
     
-    /* Fontes do Google Fonts */
     --fonte-titulos: 'Playfair Display', serif;
     --fonte-corpo: 'DM Sans', sans-serif;
     
-    /* Efeito de transição padrão */
     --transicao: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     
-    /* Cantos orgânicos que simulam traços manuais/folhas */
     --cantos-organicos: 30px 15px 30px 15px;
     --cantos-card: 20px 10px 20px 10px;
 }
 
-/* 2. CONFIGURAÇÕES GERAIS E ACESSIBILIDADE */
 * {
     margin: 0;
     padding: 0;
@@ -54,7 +49,6 @@ body {
     padding: 60px 0;
 }
 
-/* Link de acessibilidade oculto (aparece com Tab) */
 .link-salto {
     position: absolute;
     top: -100px;
@@ -69,7 +63,6 @@ body {
     top: 0;
 }
 
-/* Alinhamentos Globais */
 .alinhamento-centro {
     text-align: center;
     max-width: 700px;
@@ -80,7 +73,6 @@ body {
     display: none !important;
 }
 
-/* Estilização de Títulos e Subtítulos */
 .titulo-secao {
     font-family: var(--fonte-titulos);
     font-size: 2.5rem;
@@ -98,7 +90,6 @@ body {
     display: block;
 }
 
-/* Elemento Decorativo que simula risco feito à mão */
 .sublinhado-artesanal {
     position: relative;
     display: inline-block;
@@ -111,10 +102,10 @@ body {
     width: 100%;
     height: 4px;
     background: var(--rosa-bebe);
-    border-radius: 50%; /* Faz parecer um risco de giz/caneta */
+    border-radius: 50%;
 }
 
-/* 3. PLAYER DE MÚSICA AMBIENTE */
+/* PLAYER DE MÚSICA AMBIENTE */
 .player-ambiente {
     position: fixed;
     top: 20px;
@@ -145,7 +136,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* 4. TOPO DO SITE (HEADER & NAV) */
+/* HEADER & NAV */
 .topo-site {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
@@ -209,7 +200,7 @@ body {
     cursor: pointer;
 }
 
-/* 5. SEÇÃO HOME (HERO) */
+/* SEÇÃO HERO */
 .secao-hero {
     background: linear-gradient(135deg, #FFFFFF 0%, #E8F4FF 100%);
     min-height: 85vh;
@@ -298,7 +289,6 @@ body {
     border: 3px solid var(--branco);
 }
 
-/* Detalhe de caderno de rascunhos (Esboço manual) */
 .decoracao-sketch {
     position: absolute;
     width: 100px;
@@ -310,7 +300,7 @@ body {
     z-index: -1;
 }
 
-/* 6. SEÇÃO ESSÊNCIA HUMANA (SOBRE MIM) */
+/* SEÇÃO ESSÊNCIA */
 .secao-essencia {
     background-color: var(--branco);
 }
@@ -358,7 +348,7 @@ body {
     text-align: justify;
 }
 
-/* 7. O AGRO NO PARANÁ E NO BRASIL (CARDS) */
+/* CARDS AGRO */
 .cards-agro-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -393,7 +383,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* 8. PAINEL DE ESTATÍSTICAS ANIMADAS */
+/* PAINEL DE ESTATÍSTICAS */
 .secao-estatisticas {
     background: linear-gradient(135deg, var(--azul-escuro) 0%, #112237 100%);
     color: var(--branco);
@@ -427,7 +417,7 @@ body {
     padding: 0 15px;
 }
 
-/* 9. LINHA DO TEMPO DA EVOLUÇÃO */
+/* LINHA DO TEMPO */
 .secao-linha-tempo {
     background-color: var(--branco);
 }
@@ -439,7 +429,6 @@ body {
     padding: 40px 0;
 }
 
-/* A linha central guia */
 .cronologia::before {
     content: '';
     position: absolute;
@@ -458,7 +447,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Alternar lados dos blocos */
 .bloco-cronologico:nth-child(odd) {
     left: 0;
     text-align: right;
@@ -516,7 +504,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* 10. SEÇÃO ANTES E DEPOIS */
+/* SEÇÃO ANTES E DEPOIS */
 .antes-depois-container {
     display: flex;
     background: var(--branco);
@@ -588,7 +576,7 @@ body {
     font-weight: bold;
 }
 
-/* 11. MAPA INTERATIVO SIMPLIFICADO */
+/* MAPA INTERATIVO SIMPLIFICADO */
 .mapa-wrapper {
     background: var(--branco);
     border-radius: var(--cantos-organicos);
@@ -636,7 +624,6 @@ body {
     border: 2px dashed var(--azul-medio);
 }
 
-/* Simulação geométrica de botões flutuantes no mapa */
 .regiao-ponto {
     position: absolute;
     background: var(--branco);
@@ -685,7 +672,7 @@ body {
     gap: 8px;
 }
 
-/* 12. ECO-CALCULADORA SUSTENTÁVEL */
+/* ECO-CALCULADORA SUSTENTÁVEL */
 .calculadora-box {
     background: var(--branco);
     border-radius: var(--cantos-organicos);
@@ -750,7 +737,6 @@ body {
     color: var(--azul-escuro);
 }
 
-/* Painel de Resultados Revelados */
 .resultado-painel {
     background: #EBF9F6;
     border: 2px solid #A3E4D7;
@@ -793,7 +779,7 @@ body {
     color: var(--azul-escuro);
 }
 
-/* 13. GERADOR DE CURIOSIDADES DO PARANÁ */
+/* GERADOR DE CURIOSIDADES DO PARANÁ */
 .card-curiosidade-central {
     background: linear-gradient(135deg, var(--rosa-bebe) 0%, #FADBD8 100%);
     padding: 40px;
@@ -814,6 +800,7 @@ body {
     color: var(--azul-escuro);
     margin: 15px 0 25px 0;
     min-height: 60px;
+    transition: opacity 0.2s ease;
 }
 
 .botao-curiosidade {
@@ -833,7 +820,7 @@ body {
     color: var(--azul-escuro);
 }
 
-/* 14. GALERIA INTERATIVA (CARROSSEL) */
+/* GALERIA INTERATIVA (CARROSSEL) */
 .carrossel-wrapper {
     position: relative;
     max-width: 900px;
@@ -853,7 +840,7 @@ body {
 .carrossel-item {
     min-width: 100%;
     position: relative;
-    display: none; /* Controlado via classe ativo */
+    display: none;
 }
 
 .carrossel-item.ativo {
@@ -901,7 +888,7 @@ body {
 .btn-prev { left: 20px; }
 .btn-next { right: 20px; }
 
-/* 15. SEÇÃO FUTURO DO AGRO & CONCLUSÃO */
+/* SEÇÃO FUTURO DO AGRO & CONCLUSÃO */
 .secao-futuro {
     background: var(--branco);
     position: relative;
@@ -933,7 +920,7 @@ body {
     color: var(--texto-mutado);
 }
 
-/* 16. ASSISTENTE VIRTUAL FLUTUANTE (MASCOTE) */
+/* ASSISTENTE VIRTUAL FLUTUANTE */
 .assistente-container {
     position: fixed;
     bottom: 30px;
@@ -956,7 +943,6 @@ body {
     margin-bottom: 15px;
 }
 
-/* Triângulo do balão de fala */
 .assistente-balao-fala::after {
     content: '';
     position: absolute;
@@ -999,7 +985,7 @@ body {
     background-color: var(--rosa-bebe);
 }
 
-/* 17. RODAPÉ DO SITE (FOOTER) */
+/* RODAPÉ DO SITE */
 .rodape-site {
     background-color: #0F1E31;
     color: rgba(255, 255, 255, 0.7);
@@ -1054,7 +1040,7 @@ body {
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* 18. ANIMAÇÕES E MEDIA QUERIES (RESPONSIVIDADE) */
+/* RESPONSIVIDADE */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
