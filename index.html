@@ -4,19 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PUREAGRO – Tecnologia e Sustentabilidade</title>
-    <!-- Google Fonts: Serifada elegante para títulos manuais e Sans-serif limpa para leitura -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <!-- Vinculação do CSS Externo Corrigida para Servidores Nuvem -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Acessibilidade: Link de salto rápido para leitores de tela -->
     <a href="#conteudo-principal" class="link-salto">Pular para o conteúdo principal</a>
 
-    <!-- Player de Música Ambiente Opcional -->
     <div class="player-ambiente" role="complementary" aria-label="Trilha sonora do ambiente">
         <button id="btn-musica" class="controlador-audio" aria-pressed="false">
             <span class="icone-audio">🎵</span> Ouvir o Som do Campo
@@ -24,7 +20,6 @@
         <audio id="audio-fundo" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
     </div>
 
-    <!-- Cabeçalho e Navegação -->
     <header class="topo-site">
         <div class="container cabeçalho-flex">
             <div class="marca">
@@ -52,10 +47,8 @@
         </div>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main id="conteudo-principal">
 
-        <!-- 1. SEÇÃO HOME (HERO) -->
         <section id="home" class="secao-hero" aria-label="Abertura do Portal">
             <div class="container hero-grid">
                 <div class="hero-conteudo">
@@ -74,7 +67,6 @@
             </div>
         </section>
 
-        <!-- 2. SEÇÃO ESSÊNCIA HUMANA (SOBRE MIM) -->
         <section id="essencia" class="secao-essencia" aria-label="Essência Humana e Raízes">
             <div class="container essencia-grid">
                 <div class="essencia-imagens">
@@ -93,7 +85,6 @@
             </div>
         </section>
 
-        <!-- 3. SEÇÃO O AGRO NO PARANÁ E NO BRASIL -->
         <section id="agro-regional" class="secao-agro-regional">
             <div class="container">
                 <div class="alinhamento-centro">
@@ -120,7 +111,6 @@
             </div>
         </section>
 
-        <!-- 4. SEÇÃO PAINEL DE ESTATÍSTICAS ANIMADAS -->
         <section id="estatisticas" class="secao-estatisticas">
             <div class="container estatisticas-grid">
                 <div class="estatistica-item">
@@ -138,7 +128,6 @@
             </div>
         </section>
 
-        <!-- 5. SEÇÃO LINHA DO TEMPO DA EVOLUÇÃO -->
         <section id="linha-tempo" class="secao-linha-tempo">
             <div class="container">
                 <div class="alinhamento-centro">
@@ -159,7 +148,7 @@
                         <div class="conteudo-cronologico">
                             <span class="ano-cronologico">Fim do Séc. XX</span>
                             <h3>A Era da Mecanização</h3>
-                            <p>Chegada em massa de tratores, colheitadeiras e implementos agrícolas modernos. A produtividade dispara, mas surge a necessidade urgente de criar barriers contra a erosão do solo e o esgotamento dos recursos hídricos.</p>
+                            <p>Chegada em massa de tratores, colheitadeiras e implementos agrícolas modernos. A produtividade dispara, mas surge a necessidade urgente de criar barreiras contra a erosão do solo e o esgotamento dos recursos hídricos.</p>
                         </div>
                     </div>
                     <div class="bloco-cronologico">
@@ -174,7 +163,7 @@
                         <div class="ponto-marcador"></div>
                         <div class="conteudo-cronologico">
                             <span class="ano-cronologico">Ano Atual (2026)</span>
-                            <h3>Equilíbrio Conectado & Inteligência Artificial</h3>
+                            <h3>Equilíbrio Conectado & IA</h3>
                             <p>Drones autônomos que identificam pragas em tempo real, sensores de umidade profundos integrados com IA e fazendas focadas em pegada de carbono zero. O agro atinge sua força máxima produzindo em perfeita harmonia com as florestas e bacias hidrográficas.</p>
                         </div>
                     </div>
@@ -182,7 +171,6 @@
             </div>
         </section>
 
-        <!-- 6. SEÇÃO ANTES E DEPOIS -->
         <section id="antes-depois" class="secao-antes-depois">
             <div class="container">
                 <div class="alinhamento-centro">
@@ -213,7 +201,6 @@
             </div>
         </section>
 
-        <!-- 7. SEÇÃO MAPA INTERATIVO -->
         <section id="mapa-interativo" class="secao-mapa">
             <div class="container">
                 <div class="alinhamento-centro">
@@ -245,7 +232,6 @@
             </div>
         </section>
 
-        <!-- 8. SEÇÃO ECO-CALCULADORA -->
         <section id="eco-calculadora" class="secao-calculadora">
             <div class="container calculadora-box">
                 <div class="alinhamento-centro">
@@ -290,7 +276,6 @@
             </div>
         </section>
 
-        <!-- 9. CURIOSIDADES DO PARANÁ -->
         <section class="secao-curiosidades">
             <div class="container container-curiosidades">
                 <div class="card-curiosidade-central">
@@ -302,7 +287,6 @@
             </div>
         </section>
 
-        <!-- 10. GALERIA INTERATIVA (CARROSSEL) -->
         <section id="galeria" class="secao-galeria" aria-label="Galeria Fotográfica e de Ilustrações">
             <div class="container">
                 <div class="alinhamento-centro">
@@ -330,7 +314,6 @@
             </div>
         </section>
 
-        <!-- 11. SEÇÃO FUTURO DO AGRO & CONCLUSÃO -->
         <section class="secao-futuro">
             <div class="container futuro-container">
                 <div class="bloco-texto-futuro">
@@ -348,7 +331,6 @@
 
     </main>
 
-    <!-- 12. ASSISTENTE VIRTUAL FLUTUANTE (MASCOTE DO SITE) -->
     <div id="assistente-virtual" class="assistente-container" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Falar com o Assistente do PUREAGRO">
         <div class="assistente-balao-fala">
             <p id="texto-balao">Olá! Sou o assistente do PUREAGRO. Clique em mim para descobrir dicas ecológicas e navegar pela nossa história!</p>
@@ -358,7 +340,6 @@
         </div>
     </div>
 
-    <!-- Rodapé Completo do Site -->
     <footer class="rodape-site">
         <div class="container rodape-grid">
             <div class="rodape-bloco-marca">
@@ -382,8 +363,7 @@
         </div>
     </footer>
 
-    <!-- Vinculação do JavaScript Externo Corrigida para Servidores Nuvem -->
-    <script src="./js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 
