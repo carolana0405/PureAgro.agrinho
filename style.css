@@ -1,7 +1,4 @@
-/* ==========================================================================
-   PUREAGRO – TECNOLOGIA E SUSTENTABILIDADE (CONCURSO AGRINHO 2026)
-   ESTILO CENTRAL - DESIGN HUMANIZADO, ARTÍSTICO E RESPONSIVO
-   ========================================================================== */
+
 
 :root {
     --azul-escuro: #1E3A5F;
@@ -136,7 +133,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* HEADER & NAV */
+
 .topo-site {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
@@ -200,7 +197,7 @@ body {
     cursor: pointer;
 }
 
-/* SEÇÃO HERO */
+
 .secao-hero {
     background: linear-gradient(135deg, #FFFFFF 0%, #E8F4FF 100%);
     min-height: 85vh;
@@ -300,7 +297,7 @@ body {
     z-index: -1;
 }
 
-/* SEÇÃO ESSÊNCIA */
+
 .secao-essencia {
     background-color: var(--branco);
 }
@@ -348,7 +345,7 @@ body {
     text-align: justify;
 }
 
-/* CARDS AGRO */
+
 .cards-agro-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -383,7 +380,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* PAINEL DE ESTATÍSTICAS */
+
 .secao-estatisticas {
     background: linear-gradient(135deg, var(--azul-escuro) 0%, #112237 100%);
     color: var(--branco);
@@ -417,7 +414,7 @@ body {
     padding: 0 15px;
 }
 
-/* LINHA DO TEMPO */
+
 .secao-linha-tempo {
     background-color: var(--branco);
 }
@@ -504,7 +501,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* SEÇÃO ANTES E DEPOIS */
+
 .antes-depois-container {
     display: flex;
     background: var(--branco);
@@ -576,7 +573,7 @@ body {
     font-weight: bold;
 }
 
-/* MAPA INTERATIVO SIMPLIFICADO */
+
 .mapa-wrapper {
     background: var(--branco);
     border-radius: var(--cantos-organicos);
@@ -672,7 +669,7 @@ body {
     gap: 8px;
 }
 
-/* ECO-CALCULADORA SUSTENTÁVEL */
+
 .calculadora-box {
     background: var(--branco);
     border-radius: var(--cantos-organicos);
@@ -779,7 +776,7 @@ body {
     color: var(--azul-escuro);
 }
 
-/* GERADOR DE CURIOSIDADES DO PARANÁ */
+
 .card-curiosidade-central {
     background: linear-gradient(135deg, var(--rosa-bebe) 0%, #FADBD8 100%);
     padding: 40px;
@@ -820,7 +817,7 @@ body {
     color: var(--azul-escuro);
 }
 
-/* GALERIA INTERATIVA (CARROSSEL) */
+
 .carrossel-wrapper {
     position: relative;
     max-width: 900px;
@@ -888,7 +885,7 @@ body {
 .btn-prev { left: 20px; }
 .btn-next { right: 20px; }
 
-/* SEÇÃO FUTURO DO AGRO & CONCLUSÃO */
+
 .secao-futuro {
     background: var(--branco);
     position: relative;
@@ -920,7 +917,7 @@ body {
     color: var(--texto-mutado);
 }
 
-/* ASSISTENTE VIRTUAL FLUTUANTE */
+
 .assistente-container {
     position: fixed;
     bottom: 30px;
@@ -985,7 +982,7 @@ body {
     background-color: var(--rosa-bebe);
 }
 
-/* RODAPÉ DO SITE */
+
 .rodape-site {
     background-color: #0F1E31;
     color: rgba(255, 255, 255, 0.7);
@@ -1040,7 +1037,7 @@ body {
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* RESPONSIVIDADE */
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
