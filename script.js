@@ -1,13 +1,6 @@
-/* ==========================================================================
-   PUREAGRO – TECNOLOGIA E SUSTENTABILIDADE (CONCURSO AGRINHO 2026)
-   LÓGICA INTERATIVA INTERNA - VANILLA JAVASCRIPT
-   ========================================================================== */
-
 document.addEventListener("DOMContentLoaded", () => {
     
-    // ==========================================
     // 1. PLAYER DE MÚSICA AMBIENTE
-    // ==========================================
     const btnMusica = document.getElementById("btn-musica");
     const audioFundo = document.getElementById("audio-fundo");
 
@@ -28,9 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ==========================================
-    // 2. PAINEL DE ESTATÍSTICAS ANIMADAS (CONTADORES)
-    // ==========================================
+    
     const contadores = document.querySelectorAll(".numero-contador");
     
     const animarContadores = () => {
@@ -64,9 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         observador.observe(secaoEstatistica);
     }
 
-    // ==========================================
-    // 3. MAPA INTERATIVO (PARANÁ E BRASIL)
-    // ==========================================
+    
     const tabPR = document.getElementById("tab-pr");
     const tabBR = document.getElementById("tab-br");
     const containerRegioes = document.getElementById("container-regioes");
@@ -143,11 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
-    }
-
-    // ==========================================
-    // 4. ECO-CALCULADORA SUSTENTÁVEL
-    // ==========================================
+    } 
     const btnCalcular = document.getElementById("btn-calcular");
     const resultadoPainel = document.getElementById("resultado-calculadora");
 
@@ -200,9 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ==========================================
-    // 5. GERADOR DE CURIOSIDADES ALEATÓRIAS (PARANÁ)
-    // ==========================================
+
     const curiosidades = [
         "O Paraná possui leis rigorosas de proteção a bacias hidrográficas rurais, fazendo com que o agronegócio trabalhe lado a lado com as reservas de água doce do estado.",
         "O Sistema de Plantio Direto, essencial para evitar a erosão, foi consolidado e ganhou força nacional através de testes pioneiros em solo paranaense nos anos 1970.",
@@ -226,9 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ==========================================
-    // 6. GALERIA INTERATIVA (CARROSSEL)
-    // ==========================================
     const itensCarrossel = document.querySelectorAll(".carrossel-item");
     const btnPrev = document.getElementById("carrossel-prev");
     const btnNext = document.getElementById("carrossel-next");
@@ -253,9 +233,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 6000);
     }
 
-    // ==========================================
-    // 7. ASSISTENTE VIRTUAL INTERATIVO (MASCOTE)
-    // ==========================================
     const assistente = document.getElementById("assistente-virtual");
     const textoBalao = document.getElementById("texto-balao");
 
@@ -280,9 +257,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ==========================================
-    // 8. MENU HAMBÚRGUER (RESPONSIVIDADE MÓVEL)
-    // ==========================================
     const menuHamburguer = document.querySelector(".menu-hamburguer");
     const listaMenu = document.querySelector(".lista-menu");
 
