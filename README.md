@@ -1,4 +1,5 @@
 Sobre o Projeto PUREAGRO
+
 O PUREAGRO é um site educativo criado para o Concurso Agrinho 2026. Seu objetivo é mostrar como a tecnologia pode ajudar a agricultura a produzir mais alimentos de forma sustentável, preservando o meio ambiente e valorizando o trabalho dos produtores rurais.
 🚜 O que o site apresenta?
 Minha História com o Campo: mostra a ligação pessoal da autora com a agricultura, inspirada pelas experiências vividas com a família e no sítio da avó.
